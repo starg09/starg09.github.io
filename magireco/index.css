@@ -10,3 +10,11 @@ span.sv_q_rating_item_text {
 .sv_q_rating {
     text-align-last: center;
 }
+
+.sv_q_imgsel {
+    text-align-last: center;
+}
+
+.sv_q_imgsel img {
+    margin: auto;
+}
