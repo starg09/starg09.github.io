@@ -19,3 +19,17 @@ div[name="meguca_type"] .sv_q_rating {
 .sv_q_imgsel img {
     margin: auto;
 }
+
+.sv_q_description span {
+    font-size: smaller;
+    color: gray;
+    font-style: italic;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    display: block;
+}
+
+.sv_qstn[name="username_reddit"] div:not(h4):not(:first-child),
+.sv_qstn[name="username_discord"] div:not(h4):not(:first-child) {
+    padding-left: 2em;
+}
