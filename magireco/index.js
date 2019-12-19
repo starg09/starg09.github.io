@@ -1,4 +1,3 @@
-Survey.StylesManager.applyTheme("modern");
 
 var surveyJSON = { surveyId: 'cbc3a260-bcc4-4798-840a-79f23b6a4b5b'}
 
