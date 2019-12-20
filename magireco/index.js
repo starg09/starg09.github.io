@@ -4,10 +4,10 @@ var surveyJSON = { surveyId: 'cbc3a260-bcc4-4798-840a-79f23b6a4b5b'}
 
 function sendDataToServer(survey) {
 
-    var form_username = survey.data.username;
+    var form_username = survey.data.username.replace(/^\s+|\s+$/g, "");
     var farmed_node = survey.data.farmed_stage;
     var farmed_times = survey.data.times_farmed;
-    var farmed_drops = survey.data.drops;
+    var farmed_drops = survey.data.drops.replace(/^\s+|\s+$/g, "");
 
     console.log("Username: " + form_username);
     console.log("Farmed Node: " + farmed_node);
