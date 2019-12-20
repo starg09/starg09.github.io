@@ -1,15 +1,54 @@
 .sv_qstn .sv-q-col-3, .sv-question .sv-q-col-3 {
-    width: 12.5% !important;
+    width: 10vw!important;
 }
 
-span.sv_q_rating_item_text {
+@media screen and (max-width: 1200px) {
+    .sv_qstn .sv-q-col-3 {
+        width: 12vw!important;
+        
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .sv_qstn .sv-q-col-3 {
+        width: 15vw!important;
+        
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sv_qstn .sv-q-col-3 {
+        width: 22.5vw!important;
+        
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .sv_qstn .sv-q-col-3 {
+        width: 28vw!important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .sv_qstn .sv-q-col-3 {
+        width: 40vw!important;
+    }
+}
+
+
+.sv_q_rating_item_text,
+div[name="ep_number_mss"] .btn-group,
+div[name="battle_number_mss"] .btn-group {
     padding-left: 0.8em!important;
     padding-right: 0.8em!important;
     min-width: 6%!important;
 }
 
-div[name="meguca_type"] .sv_q_rating {
-    text-align-last: center;
+div[name="meguca_type"] .btn-group {
+    display: grid;
+    align-self: center;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .sv_q_imgsel {
@@ -32,4 +71,117 @@ div[name="meguca_type"] .sv_q_rating {
 .sv_qstn[name="username_reddit"] div:not(h4):not(:first-child),
 .sv_qstn[name="username_discord"] div:not(h4):not(:first-child) {
     padding-left: 2em;
+}
+
+
+.sv_qstn[name="username_reddit"] div.alert span,
+.sv_qstn[name="username_discord"] div.alert span {
+    padding-left: inherit!important;
+    display: inherit!important;
+    padding-top: inherit!important;
+    padding-bottom: inherit!important;
+    font-style: inherit!important;
+    font-size: inherit!important;
+    color: inherit!important;
+}
+
+.sv_qstn[name="username_reddit"] div div span,
+.sv_qstn[name="username_discord"] div div span {
+    padding-left: 0.8em;
+    display:block;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    font-style:italic;
+    font-size:small!important;
+    color: #9a9a9a;
+}
+
+.sv_qcbc label span {
+    font-size: larger;
+}
+
+.sv_imgsel {
+    width: 95%;
+    margin: auto;
+}
+
+.sv_imgsel div {
+}
+
+.sv_q_imgsel_label {
+    max-width: 120px;
+}
+
+.sv_q_imgsel_text {/* max-width: 90%; */display: block;white-space: normal;text-align: center;text-align-last: center;}
+
+.sv_q_imgsel {
+    vertical-align: top;
+}
+
+/*Bootstrap background edits*/
+
+body {
+    background-color: rgb(111, 34, 69);
+}
+
+.sv_main .sv_container {
+    color: #292929;
+}
+
+.mt-4, .my-4 {
+    /*margin-top: 1.5rem!important;*/
+    background: rgb(234, 209, 220);
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f9a3ab;
+    border-color: #b55a64;
+}
+
+.sv_main input[type="button"], .sv_main button {
+    padding: 0.4em 2.5em;
+    font-size: larger;
+}
+
+/*Selection buttons coloring*/
+
+.btn-secondary {
+    background-color: rgb(177, 65, 113);
+    border-color: rgb(103, 35, 64);
+}
+
+.btn-secondary:hover {
+    background-color: rgb(97, 23, 53);
+    border-color: rgb(103, 35, 64);
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active {
+    background-color: rgb(123, 9, 59);
+    border-color: rgb(103, 35, 64);
+}
+
+.sv_main.sv_main .sv_q_imgsel.checked label > div {
+    background-color: rgb(195, 84, 133)!important;
+}
+
+.panel-body {
+    padding-bottom: 5.2em;
+}
+
+.panel-footer {
+    position: absolute;
+    bottom:0;
+    width:100%;
+       /* Height of the footer */
+    height: 5.2em;
+    background-color: rgb(111, 34, 69);
+}
+
+.img-banner {
+    max-width: 600px;
+    width: 90%;
+    margin: auto;
+    display: block;
 }
