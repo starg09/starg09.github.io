@@ -69,13 +69,15 @@ div[name="meguca_type"] .btn-group {
 }
 
 .sv_qstn[name="username_reddit"] div:not(h4):not(:first-child),
-.sv_qstn[name="username_discord"] div:not(h4):not(:first-child) {
+.sv_qstn[name="username_discord"] div:not(h4):not(:first-child),
+.sv_qstn[name="username"] div:not(h4):not(:first-child) {
     padding-left: 2em;
 }
 
 
 .sv_qstn[name="username_reddit"] div.alert span,
-.sv_qstn[name="username_discord"] div.alert span {
+.sv_qstn[name="username_discord"] div.alert span,
+.sv_qstn[name="username"] div.alert span {
     padding-left: inherit!important;
     display: inherit!important;
     padding-top: inherit!important;
@@ -86,7 +88,8 @@ div[name="meguca_type"] .btn-group {
 }
 
 .sv_qstn[name="username_reddit"] div div span,
-.sv_qstn[name="username_discord"] div div span {
+.sv_qstn[name="username_discord"] div div span,
+.sv_qstn[name="username"] div div span {
     padding-left: 0.8em;
     display:block;
     padding-top: 1.2em;
