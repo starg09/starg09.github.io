@@ -71,7 +71,7 @@ function rememberUsername(sender, options) {
     var input = options.htmlElement.querySelector('input');
     var used_username = getCookie("username");
     options.question.value = (used_username == "") ? "Anonymous" : used_username;
-
+    window.scrollTo(0,0);
 }
 
 var survey = new Survey.Model(surveyJSON);
