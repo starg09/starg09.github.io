@@ -42,8 +42,8 @@ function sendDataToServer(survey) {
 function addNameAttribute(sender, options) {
     if (!(options.question.name == "username")) return;
     var input = options.htmlElement.querySelector('input');
-    input.setAttribute('name', 'username');
-    input.setAttribute('autocomplete', 'username');
+    input.setAttribute('name', 'username_magireco');
+    input.setAttribute('autocomplete', 'on');
     input.insertAdjacentHTML("beforebegin", "<label for=\"" + input.id + "\"> </input>");
 }
 
