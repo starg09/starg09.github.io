@@ -13,6 +13,8 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <link href="https://surveyjs.azureedge.net/1.1.25/survey.css" type="text/css" rel="stylesheet" />
@@ -23,6 +25,28 @@
     </head>
     <body>
         <div id="surveyContainer"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+        <script>
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#efefef",
+              "text": "#404040"
+            },
+            "button": {
+              "background": "#8ec760",
+              "text": "#ffffff"
+            }
+          },
+          "position": "top",
+          "static": true,
+          "type": "opt-out",
+          "content": {
+            "message": "This website uses cookies to store the username submitted, as to save time re-entering it in future uses of the form."
+          }
+        });
+        </script>
 
         <script type="text/javascript" src="./index.js"></script>
 
