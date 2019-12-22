@@ -69,7 +69,8 @@ function sendDataToServer(survey) {
 function addNameAttribute(sender, options) {
     if (!(options.question.name == "username")) return;
     var input = options.htmlElement.querySelector('input');
-    input.value = getCookie("username");
+    var used_username = getCookie("username");
+    input.value = (used_username == "") ? "Anonymous" : used_username;
 
 }
 
