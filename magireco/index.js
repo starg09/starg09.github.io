@@ -39,8 +39,17 @@ function sendDataToServer(survey) {
       .catch(error => console.error('Error!', error.message))
 }
 
+function addNameAttribute(sender, options) {
+    if (!(options.question.name == "username")) return;
+    var input = options.htmlElement.querySelector('input');
+    input.setAttribute('name', 'username');
+    input.setAttribute('autocomplete', 'username');
+    input.insertAdjacentHTML("beforebegin", "<label for=\"" + input.id + "\"> </input>");
+}
+
 var survey = new Survey.Model(surveyJSON);
 $("#surveyContainer").Survey({
     model: survey,
-    onComplete: sendDataToServer
+    onComplete: sendDataToServer,
+    onAfterRenderQuestion: addNameAttribute
 });
