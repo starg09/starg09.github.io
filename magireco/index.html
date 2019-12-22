@@ -44,6 +44,21 @@
           "type": "opt-out",
           "content": {
             "message": "This website uses cookies to store the username submitted, as to save time re-entering it in future uses of the form."
+          },
+          onInitialise: function (status) {
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-out' && !didConsent) {
+              document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+          },
+          onStatusChange: function(status, chosenBefore) {
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-out' && !didConsent) {
+              document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+          }
           }
         });
         </script>
