@@ -22,7 +22,7 @@ function getCookie(cname)
       var c = ca[i].trim();
       if (c.indexOf(name)==0) return c.substring(name.length,c.length);
       }
-    return "Anonymous";
+    return "";
 }
 
 
@@ -33,7 +33,8 @@ function sendDataToServer(survey) {
     var farmed_times = survey.data.times_farmed;
     var farmed_drops = survey.data.drops.replace(/^\s+|\s+$/g, "");
 
-    setCookie(form_username);
+    if (getCookie("cookieconsent_status") == "allow")
+      setCookie(form_username);
 
     console.log("Username: " + form_username);
     console.log("Farmed Node: " + farmed_node);
