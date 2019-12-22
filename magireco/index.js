@@ -66,11 +66,11 @@ function sendDataToServer(survey) {
       .catch(error => console.error('Error!', error.message))
 }
 
-function addNameAttribute(sender, options) {
+function rememberUsername(sender, options) {
     if (!(options.question.name == "username")) return;
     var input = options.htmlElement.querySelector('input');
     var used_username = getCookie("username");
-    input.value = (used_username == "") ? "Anonymous" : used_username;
+    options.question.value = (used_username == "") ? "Anonymous" : used_username;
 
 }
 
@@ -78,5 +78,5 @@ var survey = new Survey.Model(surveyJSON);
 $("#surveyContainer").Survey({
     model: survey,
     onComplete: sendDataToServer,
-    onAfterRenderQuestion: addNameAttribute
+    onAfterRenderQuestion: rememberUsername
 });
