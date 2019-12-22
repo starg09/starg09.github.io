@@ -2,12 +2,38 @@ Survey.StylesManager.applyTheme("bootstrap");
 
 var surveyJSON = { surveyId: 'cbc3a260-bcc4-4798-840a-79f23b6a4b5b'}
 
+function setCookie(form_username)
+{
+    var cname = "username";
+    var cvalue = form_username;
+    var exdays = 7;
+    var d = new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) 
+      {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+      }
+    return "";
+}
+
+
 function sendDataToServer(survey) {
 
     var form_username = survey.data.username.replace(/^\s+|\s+$/g, "");
     var farmed_node = survey.data.farmed_stage;
     var farmed_times = survey.data.times_farmed;
     var farmed_drops = survey.data.drops.replace(/^\s+|\s+$/g, "");
+
+    setCookie(form_username);
 
     console.log("Username: " + form_username);
     console.log("Farmed Node: " + farmed_node);
@@ -42,9 +68,8 @@ function sendDataToServer(survey) {
 function addNameAttribute(sender, options) {
     if (!(options.question.name == "username")) return;
     var input = options.htmlElement.querySelector('input');
-    input.setAttribute('name', 'username_magireco');
-    input.setAttribute('autocomplete', 'on');
-    input.insertAdjacentHTML("beforebegin", "<label for=\"" + input.id + "\"> </input>");
+    input.value = getCookie("username");
+
 }
 
 var survey = new Survey.Model(surveyJSON);
