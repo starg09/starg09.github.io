@@ -74,9 +74,15 @@ function rememberUsername(sender, options) {
     window.scrollTo(0,0);
 }
 
+
 var survey = new Survey.Model(surveyJSON);
 $("#surveyContainer").Survey({
     model: survey,
     onComplete: sendDataToServer,
     onAfterRenderQuestion: rememberUsername
 });
+
+function restartSurvey() {
+  survey.clear();
+  survey.render();
+}
