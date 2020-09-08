@@ -41,7 +41,7 @@ function sendDataToServer(survey) {
     console.log("Farmed Times: " + farmed_times);
     console.log("Dropped Items: " + farmed_drops);
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFvU7Zu90dW_-sjFaQELAgFkXLP7iMy8Vj4OrVTZC84AmFFgA/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwEsHF0x1imggpe8o_YbXc0CN_tqYpAUimu_wc9J4CmaJ9XBhDR/exec';
     
     const form = document.createElement('form');
     const form_params = {
