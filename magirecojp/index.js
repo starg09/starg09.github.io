@@ -42,7 +42,7 @@ function sendDataToServer(survey) {
     console.log("Dropped Items: " + farmed_drops);
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwEsHF0x1imggpe8o_YbXc0CN_tqYpAUimu_wc9J4CmaJ9XBhDR/exec';
-    
+
     const form = document.createElement('form');
     const form_params = {
       'reportUser': form_username,
@@ -60,7 +60,7 @@ function sendDataToServer(survey) {
         form.appendChild(hiddenField);
       }
     }
-    
+
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
