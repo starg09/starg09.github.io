@@ -50,6 +50,15 @@ div[name="meguca_type"] .btn-group {
     padding-left: 20%;
     padding-right: 20%;
 }
+div[name="meguca_type"] .btn-group fieldset label {
+    margin-bottom: .5rem;
+}
+div[name="meguca_type"] .btn-group fieldset {
+    display: inherit;
+}
+div[name="meguca_name_visual"] fieldset {
+    min-inline-size: fit-content;
+}
 
 .sv_q_imgsel {
     text-align-last: center;
