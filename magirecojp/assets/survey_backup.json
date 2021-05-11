@@ -1,18 +1,18 @@
-// Meant for use in SurveyJS, working as of v1.7.20
+// Meant for use in SurveyJS, working as of v1.8.46
 //
 
 {
     completedHtml: "<h4> Thanks you for the submission! </h4>\n\n<button onclick=\"restartSurvey()\">Start Over</button>",
     pages: [
-        {
-        name: "Survey",
-        elements: [
-        {
+     {
+      name: "Survey",
+      elements: [
+       {
         type: "html",
         name: "Intro",
         html: "<img src=\"https://starg09.com/magirecojp/assets/intro.png\" class=\"img-banner\">\n<h2><strong>Welcome to the New™️ Magia Record JP Farming Report Form!</strong></h2>\n<h4>Please follow the survey below, and don't forget to press the green <strong>&quot;Complete&quot;</strong> button at the end, <u>after confirming your inputted data</u>.</h4>\n<p><em><a href=\"https://docs.google.com/spreadsheets/d/1lR9Sftd1LfME0i51RtDuzEm_VEXoyrrTYCqMZyKRrPE/htmlview\" target=\"_blank\">View submitted data</a></em></p>\n<p><em>Credits to Rayown and those who made the <a href=\"https://docs.google.com/spreadsheets/d/1Q9r8qP0iJif4JQ99DUC8_cZdzKu4VYCUn_7BLItaCmI/htmlview\" target=\"_blank\">original JP</a> amd <a href=\"https://docs.google.com/spreadsheets/u/1/d/1-ww1HSWOVqfjG4UKShcAi9dc7vkgRsMxqWBtj0vn3mY/htmlview\" target=\"_blank\">EN</a> reporting sheets this one is based off.</em></p>\n"
-        },
-        {
+       },
+       {
         type: "text",
         name: "username",
         width: "50%",
@@ -21,56 +21,63 @@
         isRequired: true,
         requiredErrorText: "Please insert a valid username, or \"Anonymous\".",
         validators: [
-            {
-            type: "regex",
-            text: "Please insert a valid username, or \"Anonymous\".",
-            regex: "^(((/u/).*)|(.*#[0-9]{4})|(\\bAnonymous\\b))$"
-            }
+         {
+          type: "regex",
+          text: "Please insert a valid username, or \"Anonymous\".",
+          regex: "^(((/u/).*)|(.*#[0-9]{4})|(\\bAnonymous\\b))$"
+         }
         ]
-        },
-        {
+       },
+       {
         type: "panel",
         name: "panel1",
         elements: [
-            {
-            type: "rating",
-            name: "quest_type",
-            title: "Please select the type of Quest you've farmed:",
-            isRequired: true,
-            commentText: "Note: Costume Stories aren't yet supported (working on it!), if you wanna submit those feel free to select the corresponding Magical Girl Story and clarify on the \"Dropped Chests\" section.",
-            rateValues: [
-            {
+         {
+          type: "rating",
+          name: "quest_type",
+          title: "Please select the type of Quest you've farmed:",
+          isRequired: true,
+          commentText: "Note: Costume Stories aren't yet supported (working on it!), if you wanna submit those feel free to select the corresponding Magical Girl Story and clarify on the \"Dropped Chests\" section.",
+          rateValues: [
+           {
             value: "M",
             text: "Main Story"
-            },
-            {
+           },
+           {
             value: "C",
             text: "Main Story (Challenge)"
-            },
-            {
+           },
+           {
             value: "A",
             text: "Another Story"
-            },
-            {
+           },
+           {
             value: "MSS",
             text: "Magical Girl Story"
-            },
-            {
+           },
+           {
             value: "MCS",
             text: "Costume Story"
-            },
-            {
+           },
+           {
             value: "L",
             text: "Labyrinth Quests"
-            }
-            ],
-            rateMax: 6
-            },
-            {
-            type: "panel",
-            name: "panel3",
-            elements: [
-            {
+           }
+          ],
+          rateMax: 6
+         },
+         {
+          type: "html",
+          name: "question4",
+          visible: false,
+          visibleIf: "{quest_type} = 'L'",
+          html: "<h6 style=\"color:darkred; text-align:center\"><i><hr style=\"border-top: 0.4em double darkred;\"></br>Warning: Please do not submit any Labyrinth data prior to the \"1300 Days Since Release Campaign\" (March 5th, 2021)</br> as drop rates in those stages were updated in that day.</br></br><hr style=\"border-top: 0.4em double darkred;\"></i></h6>"
+         },
+         {
+          type: "panel",
+          name: "panel3",
+          elements: [
+           {
             type: "rating",
             name: "selector_mode",
             visibleIf: "{quest_type} = 'MSS'",
@@ -78,1981 +85,2208 @@
             defaultValue: "dropdown_mode",
             isRequired: true,
             rateValues: [
-                {
-                value: "dropdown_mode",
-                text: "Dropdown List"
-                },
-                {
-                value: "visual_mode",
-                text: "Visual Selector"
-                }
+             {
+              value: "dropdown_mode",
+              text: "Dropdown List"
+             },
+             {
+              value: "visual_mode",
+              text: "Visual Selector"
+             }
             ]
-            },
-            {
+           },
+           {
             type: "panel",
             name: "ms_panel",
             elements: [
-                {
-                type: "rating",
-                name: "meguca_type",
-                visibleIf: "{quest_type} = \"MSS\"",
-                title: "Choose the category that fits said Magical Girl:",
-                enableIf: "{quest_type} = \"MSS\"",
-                defaultValue: "show_all",
-                isRequired: true,
-                rateValues: [
-                {
+             {
+              type: "rating",
+              name: "meguca_type",
+              visibleIf: "{quest_type} = \"MSS\"",
+              title: "Choose the category that fits said Magical Girl:",
+              enableIf: "{quest_type} = \"MSS\"",
+              defaultValue: "show_all",
+              isRequired: true,
+              rateValues: [
+               {
                 value: "show_all",
                 text: "Show All"
-                },
-                {
-                value: "unlimited_13",
+               },
+               {
+                value: "unlimited_123",
                 text: "Unlimited (Natural 1-3 Stars)"
-                },
-                {
+               },
+               {
                 value: "unlimited_4",
                 text: "Unlimited (Natural 4 Stars)"
-                },
-                {
+               },
+               {
                 value: "limited_gacha",
                 text: "Event/Time Limited (Gacha/Fate Weave)"
-                },
-                {
+               },
+               {
                 value: "limited_welfare",
                 text: "Event/Time Limited (Shop/Welfare)"
-                }
-                ]
-                },
-                {
-                type: "imagepicker",
-                name: "meguca_name_visual",
-                visibleIf: "{meguca_type} notempty",
-                title: "Pick a Magical Girl:",
-                isRequired: true,
-                choices: [
-                {
+               }
+              ]
+             },
+             {
+              type: "imagepicker",
+              name: "meguca_name_visual",
+              visibleIf: "{meguca_type} notempty",
+              title: "Pick a Magical Girl:",
+              isRequired: true,
+              choices: [
+               {
                 value: "Iroha",
                 text: "Iroha Tamaki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Iroha.png"
-                },
-                {
+               },
+               {
                 value: "Yachiyo",
                 text: "Yachiyo Nanami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yachiyo.png"
-                },
-                {
+               },
+               {
                 value: "Tsuruno",
                 text: "Tsuruno Yui",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Tsuruno.png"
-                },
-                {
+               },
+               {
                 value: "Felicia",
                 text: "Felicia Mitsuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Felicia.png"
-                },
-                {
+               },
+               {
                 value: "Sana",
                 text: "Sana Futaba",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sana.png"
-                },
-                {
+               },
+               {
                 value: "Madoka",
                 text: "Madoka Kaname",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Madoka.png"
-                },
-                {
+               },
+               {
                 value: "Moemura",
-                text: "Homura (Glasses ver.)",
+                text: "Homura Akemi (Glasses ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Homura-Glasses.png"
-                },
-                {
+               },
+               {
                 value: "Mami",
                 text: "Mami Tomoe",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mami.png"
-                },
-                {
+               },
+               {
                 value: "Kyoko",
                 text: "Kyoko Sakura",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kyoko.png"
-                },
-                {
+               },
+               {
                 value: "Sayaka",
                 text: "Sayaka Miki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sayaka.png"
-                },
-                {
+               },
+               {
                 value: "Yuma",
                 text: "Yuma Chitose",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Chitose-Yuma.png"
-                },
-                {
+               },
+               {
                 value: "Oriko",
                 text: "Oriko Mikuni",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Oriko.png"
-                },
-                {
+               },
+               {
                 value: "Kirika",
                 text: "Kirika Kure",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kure-Kirika.png"
-                },
-                {
+               },
+               {
                 value: "Momoko",
                 text: "Momoko Togame",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Togame-Momoko.png"
-                },
-                {
+               },
+               {
                 value: "Rena",
                 text: "Rena Minami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Minami-Rena.png"
-                },
-                {
+               },
+               {
                 value: "Kaede",
                 text: "Kaede Akino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Akino-Kaede.png"
-                },
-                {
+               },
+               {
                 value: "Akira",
                 text: "Akira Shinobu",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Shinobu-Akira.png"
-                },
-                {
+               },
+               {
                 value: "Kako",
                 text: "Kako Natsume",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Natsume-Kako.png"
-                },
-                {
+               },
+               {
                 value: "Meiyui",
                 text: "Meiyui Chun",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Chun-Meiyui.png"
-                },
-                {
+               },
+               {
                 value: "Nanaka",
                 text: "Nanaka Tokiwa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Tokiwa-Nanaka.png"
-                },
-                {
+               },
+               {
                 value: "Emiri",
                 text: "Emiri Kisaki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kisaki-Emiri.png"
-                },
-                {
+               },
+               {
                 value: "Hinano",
                 text: "Hinano Miyako",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Miyako-Hinano.png"
-                },
-                {
+               },
+               {
                 value: "Sasara",
                 text: "Sasara Minagi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Minagi-Sasara.png"
-                },
-                {
+               },
+               {
                 value: "Asuka",
                 text: "Asuka Tatsuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Tatsuki-Asuka.png"
-                },
-                {
+               },
+               {
                 value: "Kanoko",
                 text: "Kanoko Yayoi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yayoi-Kanoko.png"
-                },
-                {
+               },
+               {
                 value: "Konomi",
                 text: "Konomi Haruna",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Haruna-Konomi.png"
-                },
-                {
+               },
+               {
                 value: "Manaka",
                 text: "Manaka Kurumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kurumi-Manaka.png"
-                },
-                {
+               },
+               {
                 value: "Natsuki",
                 text: "Natsuki Utsuho",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Utsuho-Natsuki.png"
-                },
-                {
+               },
+               {
                 value: "Shizuku",
                 text: "Shizuku Hozumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hozumi-Shizuku.png"
-                },
-                {
+               },
+               {
                 value: "Ayaka",
                 text: "Ayaka Mariko",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mariko-Ayaka.png"
-                },
-                {
+               },
+               {
                 value: "Masara",
                 text: "Masara Kagami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kagami-Masara.png"
-                },
-                {
+               },
+               {
                 value: "Rika",
                 text: "Rika Ayano",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Ayano-Rika.png"
-                },
-                {
+               },
+               {
                 value: "Ren",
                 text: "Ren Isuzu",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Isuzu-Ren.png"
-                },
-                {
+               },
+               {
                 value: "Ayame",
                 text: "Ayame Mikuri",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mikuri-Ayame.png"
-                },
-                {
+               },
+               {
                 value: "Hazuki",
                 text: "Hazuki Yusa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yusa-Hazuki.png"
-                },
-                {
+               },
+               {
                 value: "Konoha",
                 text: "Konoha Shizumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Shizumi-Konoha.png"
-                },
-                {
+               },
+               {
                 value: "Aimi",
                 text: "Aimi Eri",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Eri-Aimi.png"
-                },
-                {
+               },
+               {
                 value: "Karin",
                 text: "Karin Misono",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Misono-Karin.png"
-                },
-                {
+               },
+               {
                 value: "Kokoro",
                 text: "Kokoro Awane",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Awane-Kokoro.png"
-                },
-                {
+               },
+               {
                 value: "Kazumi",
                 text: "Kazumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kazumi.png"
-                },
-                {
+               },
+               {
                 value: "Kaoru",
                 text: "Kaoru Maki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Maki-Kaoru.png"
-                },
-                {
+               },
+               {
                 value: "Umika",
                 text: "Umika Misaki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Misaki-Umika.png"
-                },
-                {
+               },
+               {
                 value: "Tsukuyo",
                 text: "Tsukuyo Amane",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Amane-Tsukuyo.png"
-                },
-                {
+               },
+               {
                 value: "Tsukasa",
                 text: "Tsukasa Amane",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Amane-Tsukasa.png"
-                },
-                {
+               },
+               {
                 value: "HolyMami",
                 text: "Holy Mami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Holy-Mami.png"
-                },
-                {
+               },
+               {
                 value: "Madoka(Haregi)",
                 text: "Madoka Kaname (Haregi  ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Madoka-Haregi.png"
-                },
-                {
+               },
+               {
                 value: "Kuro",
                 text: "Kuro",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kuro.png"
-                },
-                {
+               },
+               {
                 value: "Tart",
                 text: "Darc (Tart)",
-                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Tart.png"
-                },
-                {
+               },
+               {
                 value: "Riz",
                 text: "Liz (Riz) Hawkwood",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Liz-Hawkwood.png"
-                },
-                {
+               },
+               {
                 value: "Melissa",
                 text: "Melissa de Vignolles",
-                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Melissa-de-Vignolles.png"
-                },
-                {
+               },
+               {
                 value: "Alina",
                 text: "Alina Gray",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Alina-Gray.png"
-                },
-                {
+               },
+               {
                 value: "Mito",
                 text: "Mito Aino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Aino-Mito.png"
-                },
-                {
+               },
+               {
                 value: "Reira",
                 text: "Leila Ibuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Ibuki-Reira.png"
-                },
-                {
+               },
+               {
                 value: "Seika",
                 text: "Seika Kumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kumi-Seika.png"
-                },
-                {
+               },
+               {
                 value: "Mayu",
                 text: "Mayu Kozue",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kozue-Mayu.png"
-                },
-                {
+               },
+               {
                 value: "Himika",
                 text: "Himika Mao",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mao-Himika.png"
-                },
-                {
+               },
+               {
                 value: "MadokaSenpai",
                 text: "Madoka-senpai",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Madoka-Senpai.png"
-                },
-                {
+               },
+               {
                 value: "Mitama",
                 text: "Mitama Yakumo",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mitama.png"
-                },
-                {
+               },
+               {
                 value: "Ria",
                 text: "Ria Ami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Ami-Ria.png"
-                },
-                {
+               },
+               {
                 value: "Suzune",
                 text: "Suzune Amano",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Amano-Suzune.png"
-                },
-                {
+               },
+               {
                 value: "Chisato",
                 text: "Chisato Shion",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Shion-Chisato.png"
-                },
-                {
+               },
+               {
                 value: "Ari",
                 text: "Arisa Narumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Narumi-Arisa.png"
-                },
-                {
+               },
+               {
                 value: "Kanae",
                 text: "Kanae Yukino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kanae.png"
-                },
-                {
+               },
+               {
                 value: "Meru",
                 text: "Mel Anna",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Anna-Meru.png"
-                },
-                {
+               },
+               {
                 value: "Tsurumor",
                 text: "Rumor Tsuruno",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Rumor-Tsuruno.png"
-                },
-                {
+               },
+               {
                 value: "Mifuyu",
                 text: "Mifuyu Azusa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mifuyu.png"
-                },
-                {
+               },
+               {
                 value: "Kanagi",
                 text: "Kanagi Izumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Izumi-Kanagi.png"
-                },
-                {
+               },
+               {
                 value: "Homura(Swimsuit)",
                 text: "Homura Akemi (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Homura-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Iroha(Swimsuit)",
                 text: "Iroha Tamaki (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Iroha-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Madokami",
                 text: "Ultimate Madoka",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Madokami.png"
-                },
-                {
+               },
+               {
                 value: "Nadeko",
                 text: "Nadeko Sengoku",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sengoku-Nadeko.png"
-                },
-                {
+               },
+               {
                 value: "Hitagi",
                 text: "Hitagi Senjougahara",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Senjougahara-Hitagi.png"
-                },
-                {
+               },
+               {
                 value: "Riko",
                 text: "Riko Chiaki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Chiaki-Riko.png"
-                },
-                {
+               },
+               {
                 value: "Nagisa",
                 text: "Nagisa Momoe",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Nagisa.png"
-                },
-                {
+               },
+               {
                 value: "Ikumi",
                 text: "Ikumi Makino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Makino-Ikumi.png"
-                },
-                {
+               },
+               {
                 value: "Ryou",
                 text: "Ryou Midori",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Midori-Ryou.png"
-                },
-                {
+               },
+               {
                 value: "Mayoi",
                 text: "Mayoi Hachikuji",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hachikuji-Mayoi.png"
-                },
-                {
+               },
+               {
                 value: "Tsubasa",
                 text: "Tsubasa Hanekawa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hanekawa-Tsubasa.png"
-                },
-                {
+               },
+               {
                 value: "HolyAlina",
                 text: "Holy Alina",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Holy-Alina.png"
-                },
-                {
+               },
+               {
                 value: "Mitama(Haregi)",
                 text: "Mitama Yakumo (Haregi ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mitama-Haregi.png"
-                },
-                {
+               },
+               {
                 value: "Homura",
                 text: "Akemi Homura",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Homura.png"
-                },
-                {
+               },
+               {
                 value: "Suruga",
                 text: "Suruga Kanbaru",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kanbaru-Suruga.png"
-                },
-                {
+               },
+               {
                 value: "Shinobu",
                 text: "Shinobu Oshino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Oshino-Shinobu.png"
-                },
-                {
+               },
+               {
                 value: "Touka",
                 text: "Touka Satomi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Touka.png"
-                },
-                {
+               },
+               {
                 value: "Nemu",
                 text: "Nemu Hiiragi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Nemu.png"
-                },
-                {
+               },
+               {
                 value: "Sakura",
                 text: "Eternal Sakura",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Eternal-Sakura.png"
-                },
-                {
+               },
+               {
                 value: "FeliciaChan",
                 text: "Felicia-Chan",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Felicia-Chan.png"
-                },
-                {
+               },
+               {
                 value: "IrohaChan",
                 text: "Iroha-Chan",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Iroha-Chan.png"
-                },
-                {
+               },
+               {
                 value: "Ui",
                 text: "Ui Tamaki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Ui.png"
-                },
-                {
+               },
+               {
                 value: "Hanna",
                 text: "Hanna Sarasa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sasara-Hanna.png"
-                },
-                {
+               },
+               {
                 value: "Sayuki",
                 text: "Sayuki Fumino",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Fumino-Sayuki.png"
-                },
-                {
+               },
+               {
                 value: "Nanoha",
                 text: "Nanoha Takamachi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Nanoha.png"
-                },
-                {
+               },
+               {
                 value: "Fate",
                 text: "Fate T. Harlaown",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Fate.png"
-                },
-                {
+               },
+               {
                 value: "Hayate",
                 text: "Hayate Yagami",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hayate.png"
-                },
-                {
+               },
+               {
                 value: "Tsukuyo&Tsukasa",
                 text: "Amane Sisters (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Amane-Sisters-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Corbeau",
                 text: "Corbeau",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Corbeau.png"
-                },
-                {
+               },
+               {
                 value: "Elisa",
                 text: "Elisa Celjska",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Elisa-Celjska.png"
-                },
-                {
+               },
+               {
                 value: "Kyoko(Swimsuit)",
                 text: "Kyoko Sakura (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kyoko-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Iroha&Yachiyo",
                 text: "Iroha & Yachiyo (Final Battle)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/IroYachi.png"
-                },
-                {
+               },
+               {
                 value: "Chiharu",
                 text: "Chiharu Hiroe",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hiroe-Chiharu.png"
-                },
-                {
+               },
+               {
                 value: "Yukika",
                 text: "Yukika Nanase",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Nanase-Yukika.png"
-                },
-                {
+               },
+               {
                 value: "Hikaru",
                 text: "Hikaru Kirari",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kirari-Hikaru.png"
-                },
-                {
+               },
+               {
                 value: "Matsuri",
                 text: "Matsuri Hinata",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hinata-Matsuri.png"
-                },
-                {
+               },
+               {
                 value: "Haruka",
                 text: "Haruka Kanade",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kanade-Haruka.png"
-                },
-                {
+               },
+               {
                 value: "Sunao",
                 text: "Sunao Toki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Toki-Sunao.png"
-                },
-                {
+               },
+               {
                 value: "Temari",
                 text: "Temari Kira",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kira-Temari.png"
-                },
-                {
+               },
+               {
                 value: "Mikura",
                 text: "Mikura Komachi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Komachi-Mikura.png"
-                },
-                {
+               },
+               {
                 value: "Seira",
                 text: "Seira Mihono",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mihono-Seira.png"
-                },
-                {
+               },
+               {
                 value: "Shigure",
                 text: "Shigure Miyabi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Miyabi-Shigure.png"
-                },
-                {
+               },
+               {
                 value: "Rika&Ren",
                 text: "Rika & Ren (Christmas ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Rika-Ren.png"
-                },
-                {
+               },
+               {
                 value: "Sayaka(Haregi)",
                 text: "Sayaka Miki (Haregi ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sayaka-Haregi.png"
-                },
-                {
+               },
+               {
                 value: "Ranka",
                 text: "Ranka Chizu",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Chizu-Ranka.png"
-                },
-                {
+               },
+               {
                 value: "Livia",
                 text: "Livia Madeiros",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Livia-Madeiros.png"
-                },
-                {
+               },
+               {
                 value: "Ryouko",
                 text: "Ryouko Natsu",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Natsu-Ryouko.png"
-                },
-                {
+               },
+               {
                 value: "Sakuya",
                 text: "Sakuya Suzuya",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Suzuya-Sakuya.png"
-                },
-                {
+               },
+               {
                 value: "Nagisa(Valentine)",
                 text: "Nagisa Momoe (Valentine ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Nagisa-Valentine.png"
-                },
-                {
+               },
+               {
                 value: "Hagumu",
                 text: "Hagumu Azumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Azumi-Hagumu.png"
-                },
-                {
+               },
+               {
                 value: "Moka",
                 text: "Moka Megumi",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Megumi-Moka.png"
-                },
-                {
+               },
+               {
                 value: "Meguru",
                 text: "Meguru Hibiki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Hibiki-Meguru.png"
-                },
-                {
+               },
+               {
                 value: "Yozuru",
                 text: "Yozuru Sasame",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sasame-Yozuru.png"
-                },
-                {
+               },
+               {
                 value: "RenaChan",
                 text: "Rena-Chan (Idol ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Rena-Chan.png"
-                },
-                {
+               },
+               {
                 value: "Ao",
                 text: "Ao Kasane",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kasane-Ao.png"
-                },
-                {
+               },
+               {
                 value: "Maria",
                 text: "Maria Yuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yuki-Maria.png"
-                },
-                {
+               },
+               {
                 value: "Rui",
                 text: "Rui Mizuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mizuki-Rui.png"
-                },
-                {
+               },
+               {
                 value: "Tsumugi",
                 text: "Tsumugi Wakana",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Wakana-Tsumugi.png"
-                },
-                {
+               },
+               {
                 value: "Yuuna",
                 text: "Yuuna Kaharu",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Kaharu-Yuuna.png"
-                },
-                {
+               },
+               {
                 value: "Hotori",
                 text: "Hotori Yuzuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yuzuki-Hotori.png"
-                },
-                {
+               },
+               {
                 value: "Rion",
                 text: "Rion Yuzuki",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_welfare'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Yuzuki-Rion.png"
-                },
-                {
+               },
+               {
                 value: "Lapin",
                 text: "Lapin",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Lapin.png"
-                },
-                {
+               },
+               {
                 value: "Tart(Final)",
                 text: "Tart (Final ver.)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Tart-Final.png"
-                },
-                {
+               },
+               {
                 value: "Chika",
                 text: "Chika Aoba",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_123'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Aoba-Chika.png"
-                },
-                {
+               },
+               {
                 value: "Sudachi",
                 text: "Sudachi Sawa",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Sawa-Sudachi.png"
-                },
-                {
+               },
+               {
                 value: "Rena&Kaede",
                 text: "Rena & Kaede (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Rena-Kaede-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Mami(Mizugi)",
                 text: "Mami Tomoe (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Mami-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "Sakura(Mizugi)",
                 text: "Eternal Sakura (Swimsuit)",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Eternal-Sakura-Swimsuit.png"
-                },
-                {
+               },
+               {
                 value: "LittleKyubey",
                 text: "Little Kyuubey",
                 visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
                 imageLink: "https://starg09.com/magirecojp/assets/megucas/Little-Kyubey.png"
-                }
-                ],
-                colCount: 3,
-                imageHeight: 100,
-                imageWidth: 100,
-                showLabel: true
-                }
+               },
+               {
+                value: "Shizuka",
+                text: "Shizuka Tokime",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/Tokime-Shizuka.png"
+               },
+               {
+                value: "Jun",
+                text: "Jun Kazari",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/Kazari-Jun.png"
+               },
+               {
+                value: "Yachiyo&Mifuyu",
+                text: "Yachiyo & Mifuyu (Origin)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/YachiMifu.png"
+               },
+               {
+                value: "Kanagi(Vampire)",
+                text: "Kanagi Izumi (Vampire ver.)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/Izumi-Kanagi-Vampire.png"
+               },
+               {
+                value: "Momoko(Sister)",
+                text: "Momoko Togame (Sister ver.)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/Togame-Momoko-Sister.png"
+               },
+               {
+                value: "Mikage",
+                text: "Mikage Yakumo",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://starg09.com/magirecojp/assets/megucas/Yakumo-Mikage.png"
+               },
+               {
+                value: "Tsuruno&Felicia",
+                text: "Tsuruno & Felicia (Delivery ver.)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/4FZnMKY.png"
+               },
+               {
+                value: "Touka&Nemu",
+                text: "Touka & Nemu (Holy Night ver.)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/36RVmmt.png"
+               },
+               {
+                value: "Iroha&Ui",
+                text: "Iroha & Ui (Miko ver.)",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/NQjVUYO.png"
+               },
+               {
+                value: "Juri",
+                text: "Juri Ooba",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://i.imgur.com/J92UiT2.png"
+               },
+               {
+                value: "Tsubaki",
+                text: "Tsubaki Mikoto",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/IDfw10Z.png"
+               },
+               {
+                value: "RumorSana",
+                text: "Rumor Sana",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/xe53UXu.png"
+               },
+               {
+                value: "Ashley",
+                text: "Ashley Taylor",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/TT083Xn.png"
+               },
+               {
+                value: "Mitsune",
+                text: "Mitsune Miwa",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://i.imgur.com/wF2rvBz.png"
+               },
+               {
+                value: "Kami-senpai",
+                text: "Ultimate Madoka-senpai",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/nfAGFSf.png"
+               },
+               {
+                value: "Alexandra",
+                text: "Alexandra Kurusu",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'unlimited_4'",
+                imageLink: "https://i.imgur.com/Jk1DuxH.png"
+               },
+               {
+                value: "Konoha&Hazuki",
+                text: "Konoha & Hazuki",
+                visibleIf: "{meguca_type} = 'show_all' || {meguca_type} = 'limited_gacha'",
+                imageLink: "https://i.imgur.com/YX3PPSM.png"
+               }
+              ],
+              colCount: 3,
+              imageHeight: 100,
+              imageWidth: 100,
+              showLabel: true
+             }
             ],
             visibleIf: "{selector_mode} = \"visual_mode\"",
             isRequired: true
-            },
-            {
+           },
+           {
             type: "panel",
             name: "dropdown_ms_chooser",
             elements: [
-                {
-                type: "dropdown",
-                name: "meguca_name_dropdown",
-                width: "50%",
-                title: "Pick a Magical Girl:",
-                isRequired: true,
-                choices: [
-                {
+             {
+              type: "dropdown",
+              name: "meguca_name_dropdown",
+              width: "50%",
+              title: "Pick a Magical Girl:",
+              isRequired: true,
+              choices: [
+               {
                 value: "Iroha",
                 text: "Iroha Tamaki"
-                },
-                {
+               },
+               {
                 value: "Yachiyo",
                 text: "Yachiyo Nanami"
-                },
-                {
+               },
+               {
                 value: "Tsuruno",
                 text: "Tsuruno Yui"
-                },
-                {
+               },
+               {
                 value: "Felicia",
                 text: "Felicia Mitsuki"
-                },
-                {
+               },
+               {
                 value: "Sana",
                 text: "Sana Futaba"
-                },
-                {
+               },
+               {
                 value: "Madoka",
                 text: "Madoka Kaname"
-                },
-                {
+               },
+               {
                 value: "Moemura",
-                text: "Homura (Glasses ver.)"
-                },
-                {
+                text: "Homura Akemi (Glasses ver.)"
+               },
+               {
                 value: "Mami",
                 text: "Mami Tomoe"
-                },
-                {
+               },
+               {
                 value: "Kyoko",
                 text: "Kyoko Sakura"
-                },
-                {
+               },
+               {
                 value: "Sayaka",
                 text: "Sayaka Miki"
-                },
-                {
+               },
+               {
                 value: "Yuma",
                 text: "Yuma Chitose"
-                },
-                {
+               },
+               {
                 value: "Oriko",
                 text: "Oriko Mikuni"
-                },
-                {
+               },
+               {
                 value: "Kirika",
                 text: "Kirika Kure"
-                },
-                {
+               },
+               {
                 value: "Momoko",
                 text: "Momoko Togame"
-                },
-                {
+               },
+               {
                 value: "Rena",
                 text: "Rena Minami"
-                },
-                {
+               },
+               {
                 value: "Kaede",
                 text: "Kaede Akino"
-                },
-                {
+               },
+               {
                 value: "Akira",
                 text: "Akira Shinobu"
-                },
-                {
+               },
+               {
                 value: "Kako",
                 text: "Kako Natsume"
-                },
-                {
+               },
+               {
                 value: "Meiyui",
                 text: "Meiyui Chun"
-                },
-                {
+               },
+               {
                 value: "Nanaka",
                 text: "Nanaka Tokiwa"
-                },
-                {
+               },
+               {
                 value: "Emiri",
                 text: "Emiri Kisaki"
-                },
-                {
+               },
+               {
                 value: "Hinano",
                 text: "Hinano Miyako"
-                },
-                {
+               },
+               {
                 value: "Sasara",
                 text: "Sasara Minagi"
-                },
-                {
+               },
+               {
                 value: "Asuka",
                 text: "Asuka Tatsuki"
-                },
-                {
+               },
+               {
                 value: "Kanoko",
                 text: "Kanoko Yayoi"
-                },
-                {
+               },
+               {
                 value: "Konomi",
                 text: "Konomi Haruna"
-                },
-                {
+               },
+               {
                 value: "Manaka",
                 text: "Manaka Kurumi"
-                },
-                {
+               },
+               {
                 value: "Natsuki",
                 text: "Natsuki Utsuho"
-                },
-                {
+               },
+               {
                 value: "Shizuku",
                 text: "Shizuku Hozumi"
-                },
-                {
+               },
+               {
                 value: "Ayaka",
                 text: "Ayaka Mariko"
-                },
-                {
+               },
+               {
                 value: "Masara",
                 text: "Masara Kagami"
-                },
-                {
+               },
+               {
                 value: "Rika",
                 text: "Rika Ayano"
-                },
-                {
+               },
+               {
                 value: "Ren",
                 text: "Ren Isuzu"
-                },
-                {
+               },
+               {
                 value: "Ayame",
                 text: "Ayame Mikuri"
-                },
-                {
+               },
+               {
                 value: "Hazuki",
                 text: "Hazuki Yusa"
-                },
-                {
+               },
+               {
                 value: "Konoha",
                 text: "Konoha Shizumi"
-                },
-                {
+               },
+               {
                 value: "Aimi",
                 text: "Aimi Eri"
-                },
-                {
+               },
+               {
                 value: "Karin",
                 text: "Karin Misono"
-                },
-                {
+               },
+               {
                 value: "Kokoro",
                 text: "Kokoro Awane"
-                },
-                {
+               },
+               {
                 value: "Kazumi",
                 text: "Kazumi"
-                },
-                {
+               },
+               {
                 value: "Kaoru",
                 text: "Kaoru Maki"
-                },
-                {
+               },
+               {
                 value: "Umika",
                 text: "Umika Misaki"
-                },
-                {
+               },
+               {
                 value: "Tsukuyo",
                 text: "Tsukuyo Amane"
-                },
-                {
+               },
+               {
                 value: "Tsukasa",
                 text: "Tsukasa Amane"
-                },
-                {
+               },
+               {
                 value: "HolyMami",
                 text: "Holy Mami"
-                },
-                {
+               },
+               {
                 value: "Madoka(Haregi)",
                 text: "Madoka Kaname (Haregi  ver.)"
-                },
-                {
+               },
+               {
                 value: "Kuro",
                 text: "Kuro"
-                },
-                {
+               },
+               {
                 value: "Tart",
                 text: "Darc (Tart)"
-                },
-                {
+               },
+               {
                 value: "Riz",
                 text: "Liz (Riz) Hawkwood"
-                },
-                {
+               },
+               {
                 value: "Melissa",
                 text: "Melissa de Vignolles"
-                },
-                {
+               },
+               {
                 value: "Alina",
                 text: "Alina Gray"
-                },
-                {
+               },
+               {
                 value: "Mito",
                 text: "Mito Aino"
-                },
-                {
+               },
+               {
                 value: "Reira",
                 text: "Leila Ibuki"
-                },
-                {
+               },
+               {
                 value: "Seika",
                 text: "Seika Kumi"
-                },
-                {
+               },
+               {
                 value: "Mayu",
                 text: "Mayu Kozue"
-                },
-                {
+               },
+               {
                 value: "Himika",
                 text: "Himika Mao"
-                },
-                {
+               },
+               {
                 value: "MadokaSenpai",
                 text: "Madoka-senpai"
-                },
-                {
+               },
+               {
                 value: "Mitama",
                 text: "Mitama Yakumo"
-                },
-                {
+               },
+               {
                 value: "Ria",
                 text: "Ria Ami"
-                },
-                {
+               },
+               {
                 value: "Suzune",
                 text: "Suzune Amano"
-                },
-                {
+               },
+               {
                 value: "Chisato",
                 text: "Chisato Shion"
-                },
-                {
+               },
+               {
                 value: "Ari",
                 text: "Arisa Narumi"
-                },
-                {
+               },
+               {
                 value: "Kanae",
                 text: "Kanae Yukino"
-                },
-                {
+               },
+               {
                 value: "Meru",
                 text: "Mel Anna"
-                },
-                {
+               },
+               {
                 value: "Tsurumor",
                 text: "Rumor Tsuruno"
-                },
-                {
+               },
+               {
                 value: "Mifuyu",
                 text: "Mifuyu Azusa"
-                },
-                {
+               },
+               {
                 value: "Kanagi",
                 text: "Kanagi Izumi"
-                },
-                {
+               },
+               {
                 value: "Homura(Swimsuit)",
                 text: "Homura Akemi (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Iroha(Swimsuit)",
                 text: "Iroha Tamaki (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Madokami",
                 text: "Ultimate Madoka"
-                },
-                {
+               },
+               {
                 value: "Nadeko",
                 text: "Nadeko Sengoku"
-                },
-                {
+               },
+               {
                 value: "Hitagi",
                 text: "Hitagi Senjougahara"
-                },
-                {
+               },
+               {
                 value: "Riko",
                 text: "Riko Chiaki"
-                },
-                {
+               },
+               {
                 value: "Nagisa",
                 text: "Nagisa Momoe"
-                },
-                {
+               },
+               {
                 value: "Ikumi",
                 text: "Ikumi Makino"
-                },
-                {
+               },
+               {
                 value: "Ryou",
                 text: "Ryou Midori"
-                },
-                {
+               },
+               {
                 value: "Mayoi",
                 text: "Mayoi Hachikuji"
-                },
-                {
+               },
+               {
                 value: "Tsubasa",
                 text: "Tsubasa Hanekawa"
-                },
-                {
+               },
+               {
                 value: "HolyAlina",
                 text: "Holy Alina"
-                },
-                {
+               },
+               {
                 value: "Mitama(Haregi)",
                 text: "Mitama Yakumo (Haregi ver.)"
-                },
-                {
+               },
+               {
                 value: "Homura",
                 text: "Akemi Homura"
-                },
-                {
+               },
+               {
                 value: "Suruga",
                 text: "Suruga Kanbaru"
-                },
-                {
+               },
+               {
                 value: "Shinobu",
                 text: "Shinobu Oshino"
-                },
-                {
+               },
+               {
                 value: "Touka",
                 text: "Touka Satomi"
-                },
-                {
+               },
+               {
                 value: "Nemu",
                 text: "Nemu Hiiragi"
-                },
-                {
+               },
+               {
                 value: "Sakura",
                 text: "Eternal Sakura"
-                },
-                {
+               },
+               {
                 value: "FeliciaChan",
                 text: "Felicia-Chan"
-                },
-                {
+               },
+               {
                 value: "IrohaChan",
                 text: "Iroha-Chan"
-                },
-                {
+               },
+               {
                 value: "Ui",
                 text: "Ui Tamaki"
-                },
-                {
+               },
+               {
                 value: "Hanna",
                 text: "Hanna Sarasa"
-                },
-                {
+               },
+               {
                 value: "Sayuki",
                 text: "Sayuki Fumino"
-                },
-                {
+               },
+               {
                 value: "Nanoha",
                 text: "Nanoha Takamachi"
-                },
-                {
+               },
+               {
                 value: "Fate",
                 text: "Fate T. Harlaown"
-                },
-                {
+               },
+               {
                 value: "Hayate",
                 text: "Hayate Yagami"
-                },
-                {
+               },
+               {
                 value: "Tsukuyo&Tsukasa",
                 text: "Amane Sisters (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Corbeau",
                 text: "Corbeau"
-                },
-                {
+               },
+               {
                 value: "Elisa",
                 text: "Elisa Celjska"
-                },
-                {
+               },
+               {
                 value: "Kyoko(Swimsuit)",
                 text: "Kyoko Sakura (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Iroha&Yachiyo",
                 text: "Iroha & Yachiyo (Final Battle)"
-                },
-                {
+               },
+               {
                 value: "Chiharu",
                 text: "Chiharu Hiroe"
-                },
-                {
+               },
+               {
                 value: "Yukika",
                 text: "Yukika Nanase"
-                },
-                {
+               },
+               {
                 value: "Hikaru",
                 text: "Hikaru Kirari"
-                },
-                {
+               },
+               {
                 value: "Matsuri",
                 text: "Matsuri Hinata"
-                },
-                {
+               },
+               {
                 value: "Haruka",
                 text: "Haruka Kanade"
-                },
-                {
+               },
+               {
                 value: "Sunao",
                 text: "Sunao Toki"
-                },
-                {
+               },
+               {
                 value: "Temari",
                 text: "Temari Kira"
-                },
-                {
+               },
+               {
                 value: "Mikura",
                 text: "Mikura Komachi"
-                },
-                {
+               },
+               {
                 value: "Seira",
                 text: "Seira Mihono"
-                },
-                {
+               },
+               {
                 value: "Shigure",
                 text: "Shigure Miyabi"
-                },
-                {
+               },
+               {
                 value: "Rika&Ren",
                 text: "Rika & Ren (Christmas ver.)"
-                },
-                {
+               },
+               {
                 value: "Sayaka(Haregi)",
                 text: "Sayaka Miki (Haregi ver.)"
-                },
-                {
+               },
+               {
                 value: "Ranka",
                 text: "Ranka Chizu"
-                },
-                {
+               },
+               {
                 value: "Livia",
                 text: "Livia Madeiros"
-                },
-                {
+               },
+               {
                 value: "Ryouko",
                 text: "Ryouko Natsu"
-                },
-                {
+               },
+               {
                 value: "Sakuya",
                 text: "Sakuya Suzuya"
-                },
-                {
+               },
+               {
                 value: "Nagisa(Valentine)",
                 text: "Nagisa Momoe (Valentine ver.)"
-                },
-                {
+               },
+               {
                 value: "Hagumu",
                 text: "Hagumu Azumi"
-                },
-                {
+               },
+               {
                 value: "Moka",
                 text: "Moka Megumi"
-                },
-                {
+               },
+               {
                 value: "Meguru",
                 text: "Meguru Hibiki"
-                },
-                {
+               },
+               {
                 value: "Yozuru",
                 text: "Yozuru Sasame"
-                },
-                {
+               },
+               {
                 value: "RenaChan",
                 text: "Rena-Chan (Idol ver.)"
-                },
-                {
+               },
+               {
                 value: "Ao",
                 text: "Ao Kasane"
-                },
-                {
+               },
+               {
                 value: "Maria",
                 text: "Maria Yuki"
-                },
-                {
+               },
+               {
                 value: "Rui",
                 text: "Rui Mizuki"
-                },
-                {
+               },
+               {
                 value: "Tsumugi",
                 text: "Tsumugi Wakana"
-                },
-                {
+               },
+               {
                 value: "Yuuna",
                 text: "Yuuna Kaharu"
-                },
-                {
+               },
+               {
                 value: "Hotori",
                 text: "Hotori Yuzuki"
-                },
-                {
+               },
+               {
                 value: "Rion",
                 text: "Rion Yuzuki"
-                },
-                {
+               },
+               {
                 value: "Lapin",
                 text: "Lapin"
-                },
-                {
+               },
+               {
                 value: "Tart(Final)",
                 text: "Tart (Final ver.)"
-                },
-                {
+               },
+               {
                 value: "Chika",
                 text: "Chika Aoba"
-                },
-                {
+               },
+               {
                 value: "Sudachi",
                 text: "Sudachi Sawa"
-                },
-                {
+               },
+               {
                 value: "Rena&Kaede",
                 text: "Rena & Kaede (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Mami(Mizugi)",
                 text: "Mami Tomoe (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "Sakura(Mizugi)",
                 text: "Eternal Sakura (Swimsuit)"
-                },
-                {
+               },
+               {
                 value: "LittleKyubey",
                 text: "Little Kyuubey"
-                }
-                ]
-                }
+               },
+               {
+                value: "Shizuka",
+                text: "Shizuka Tokime"
+               },
+               {
+                value: "Jun",
+                text: "Jun Kazari"
+               },
+               {
+                value: "Yachiyo&Mifuyu",
+                text: "Yachiyo & Mifuyu (Origin ver.)"
+               },
+               {
+                value: "Kanagi(Vampire)",
+                text: "Kanagi Izumi (Vampire ver.)"
+               },
+               {
+                value: "Momoko(Sister)",
+                text: "Momoko Togame (Sister ver.)"
+               },
+               {
+                value: "Mikage",
+                text: "Mikage Yakumo"
+               },
+               {
+                value: "Tsuruno&Felicia",
+                text: "Tsuruno & Felicia (Delivery ver.)"
+               },
+               {
+                value: "Touka&Nemu",
+                text: "Touka & Nemu (Holy Night ver.)"
+               },
+               {
+                value: "Iroha&Ui",
+                text: "Iroha & Ui (Miko ver.)"
+               },
+               {
+                value: "Juri",
+                text: "Juri Ooba"
+               },
+               {
+                value: "Tsubaki",
+                text: "Tsubaki Mikoto"
+               },
+               {
+                value: "RumorSana",
+                text: "Rumor Sana"
+               },
+               {
+                value: "Ashley",
+                text: "Ashley Taylor"
+               },
+               {
+                value: "Mitsune",
+                text: "Mitsune Miwa"
+               },
+               {
+                value: "Kami-senpai",
+                text: "Ultimate Madoka-senpai"
+               },
+               {
+                value: "Alexandra",
+                text: "Alexandra Kurusu"
+               },
+               {
+                value: "Konoha&Hazuki",
+                text: "Konoha & Hazuki"
+               }
+              ]
+             }
             ],
             visibleIf: "{quest_type} = \"MSS\" && {selector_mode} = \"dropdown_mode\"",
             isRequired: true
-            }
-            ],
-            title: "Please select the Character's Story you have been farming:"
-            },
-            {
-            type: "panel",
-            name: "mcs_panel",
-            elements: [
-            {
+           }
+          ],
+          title: "Please select the Character's Story you have been farming:"
+         },
+         {
+          type: "panel",
+          name: "mcs_panel",
+          elements: [
+           {
             type: "dropdown",
             name: "mcs_dropdown",
             width: "50%",
             title: "Pick a Costume Story:",
             isRequired: true,
             choices: [
-                {
-                value: "[Iroha]-Swimsuit",
-                text: "Iroha Tamaki [Swimsuit]"
-                },
-                {
-                value: "[Iroha]-Christmas",
-                text: "Iroha Tamaki [Christmas]"
-                },
-                {
-                value: "[Iroha]-NewYear",
-                text: "Iroha Tamaki [New Years]"
-                },
-                {
-                value: "[Iroha]-Winter",
-                text: "Iroha Tamaki [Winter Clothes]"
-                },
-                {
-                value: "[Iroha]-Maid",
-                text: "Iroha Tamaki [Maid]"
-                },
-                {
-                value: "[Yachiyo]-Swimsuit",
-                text: "Yachiyo Nanami [Swimsuit]"
-                },
-                {
-                value: "[Yachiyo]-NewYear",
-                text: "Yachiyo Nanami [New Years]"
-                },
-                {
-                value: "[Yachiyo]-School",
-                text: "Yachiyo Nanami [Uniform]"
-                },
-                {
-                value: "[Tsuruno]-Swimsuit",
-                text: "Tsuruno Yui [Swimsuit]"
-                },
-                {
-                value: "[Tsuruno]-Christmas",
-                text: "Tsuruno Yui [Christmas]"
-                },
-                {
-                value: "[Tsuruno]-NewYear",
-                text: "Tsuruno Yui [New Years]"
-                },
-                {
-                value: "[Tsuruno]-Winter",
-                text: "Tsuruno Yui [Winter Clothes]"
-                },
-                {
-                value: "[Sana]-Swimsuit",
-                text: "Sana Futaba [Swimsuit]"
-                },
-                {
-                value: "[Sana]-NewYear",
-                text: "Sana Futaba [New Years]"
-                },
-                {
-                value: "[Sana]-Winter",
-                text: "Sana Futaba [Winter Clothes]"
-                },
-                {
-                value: "[Felicia]-Swimsuit",
-                text: "Felicia Mitsuki [Swimsuit]"
-                },
-                {
-                value: "[Felicia]-Halloween",
-                text: "Felicia Mitsuki [Halloween]"
-                },
-                {
-                value: "[Felicia]-NewYear",
-                text: "Felicia Mitsuki [New Years]"
-                },
-                {
-                value: "[Felicia]-Winter",
-                text: "Felicia Mitsuki [Winter Clothes]"
-                },
-                {
-                value: "[Mifuyu]-School",
-                text: "Mifuyu Azusa [Uniform]"
-                },
-                {
-                value: "[Mifuyu]-Swimsuit",
-                text: "Mifuyu Azusa [Swimsuit]"
-                },
-                {
-                value: "[Touka]-Swimsuit",
-                text: "Touka Satomi [Swimsuit]"
-                },
-                {
-                value: "[Alina]-Swimsuit",
-                text: "Alina Gray [Swimsuit]"
-                },
-                {
-                value: "[Rena]-Swimsuit",
-                text: "Rena Minami [Swimsuit]"
-                },
-                {
-                value: "[Rena]-Christmas",
-                text: "Rena Minami [Christmas]"
-                },
-                {
-                value: "[Rena]-Winter",
-                text: "Rena Minami [Winter Clothes]"
-                },
-                {
-                value: "[Momoko]-Swimsuit",
-                text: "Momoko Togame [Swimsuit]"
-                },
-                {
-                value: "[Momoko]-Winter",
-                text: "Momoko Togame [Winter Clothes]"
-                },
-                {
-                value: "[Kaede]-Swimsuit",
-                text: "Kaede Akino [Swimsuit]"
-                },
-                {
-                value: "[Kaede]-Winter",
-                text: "Kaede Akino [Winter Clothes]"
-                },
-                {
-                value: "[Karin]-Swimsuit",
-                text: "Karin Misono [Swimsuit]"
-                },
-                {
-                value: "[Nemu]-Swimsuit",
-                text: "Nemu Hiiragi [Swimsuit]"
-                },
-                {
-                value: "[Ui]-Swimsuit",
-                text: "Ui Tamaki [Swimsuit]"
-                },
-                {
-                value: "[Kanagi]-Swimsuit",
-                text: "Kanagi Izumi [Swimsuit]"
-                },
-                {
-                value: "[Kanagi]-Winter",
-                text: "Kanagi Izumi [Winter Clothes]"
-                },
-                {
-                value: "[Kanagi]-Maid",
-                text: "Kanagi Izumi [Maid]"
-                },
-                {
-                value: "[Mitama]-Swimsuit",
-                text: "Mitama Yakumo [Swimsuit]"
-                },
-                {
-                value: "[Mitama]-Home",
-                text: "Mitama Yakumo [Home]"
-                },
-                {
-                value: "[Tsukuyo]-Christmas",
-                text: "Tsukuyo Amane [Christmas]"
-                },
-                {
-                value: "[Tsukuyo]-Winter",
-                text: "Tsukuyo Amane [Winter Clothes]"
-                },
-                {
-                value: "[Tsukasa]-Christmas",
-                text: "Tsukasa Amane [Christmas]"
-                },
-                {
-                value: "[Tsukasa]-Winter",
-                text: "Tsukasa Amane [Winter Clothes]"
-                },
-                {
-                value: "[Madoka]-Swimsuit",
-                text: "Madoka Kaname [Swimsuit]"
-                },
-                {
-                value: "[Madoka]-Winter",
-                text: "Madoka Kaname [Winter Clothes]"
-                },
-                {
-                value: "[Moemura]-NewYear",
-                text: "Homura Akemi (Glasses ver.) [New Years]"
-                },
-                {
-                value: "[Moemura]-Winter",
-                text: "Homura Akemi (Glasses ver.) [Winter Clothes]"
-                },
-                {
-                value: "[Sayaka]-Swimsuit",
-                text: "Sayaka Miki [Swimsuit]"
-                },
-                {
-                value: "[Sayaka]-Winter",
-                text: "Sayaka Miki [Winter Clothes]"
-                },
-                {
-                value: "[Mami]-Swimsuit",
-                text: "Mami Tomoe [Swimsuit]"
-                },
-                {
-                value: "[Mami]-Winter",
-                text: "Mami Tomoe [Winter Clothes]"
-                },
-                {
-                value: "[Kyoko]-Swimsuit",
-                text: "Kyoko Sakura [Swimsuit]"
-                },
-                {
-                value: "[Kyoko]-Halloween",
-                text: "Kyoko Sakura [Halloween]"
-                },
-                {
-                value: "[Kyoko]-Winter",
-                text: "Kyoko Sakura [Winter Clothes]"
-                },
-                {
-                value: "[Natsuki]-Halloween",
-                text: "Natsuki Utsuho [Halloween]"
-                },
-                {
-                value: "[Hinano]-Swimsuit",
-                text: "Hinano Miyako [Swimsuit]"
-                },
-                {
-                value: "[Hinano]-Winter",
-                text: "Hinano Miyako [Winter Clothes]"
-                },
-                {
-                value: "[Emiri]-Christmas",
-                text: "Emiri Kisaki [Christmas]"
-                },
-                {
-                value: "[Emiri]-Winter",
-                text: "Emiri Kisaki [Winter Clothes]"
-                },
-                {
-                value: "[Sasara]-Winter",
-                text: "Sasara Minagi [Winter Clothes]"
-                },
-                {
-                value: "[Asuka]-Winter",
-                text: "Asuka Tatsuki [Winter Clothes]"
-                },
-                {
-                value: "[Shizuku]-Halloween",
-                text: "Shizuku Hozumi [Halloween]"
-                },
-                {
-                value: "[Akira]-Christmas",
-                text: "Akira Shinobu [Christmas]"
-                },
-                {
-                value: "[Kako]-Halloween",
-                text: "Kako Natsume [Halloween]"
-                },
-                {
-                value: "[Kokoro]-Swimsuit",
-                text: "Kokoro Awane [Swimsuit]"
-                },
-                {
-                value: "[Kokoro]-Winter",
-                text: "Kokoro Awane [Winter Clothes]"
-                },
-                {
-                value: "[Kokoro]-Outdoor",
-                text: "Kokoro Awane [Mountaineering]"
-                },
-                {
-                value: "[Masara]-Swimsuit",
-                text: "Masara Kagami [Swimsuit]"
-                },
-                {
-                value: "[Masara]-Winter",
-                text: "Masara Kagami [Winter Clothes]"
-                },
-                {
-                value: "[Masara]-Outdoor",
-                text: "Masara Kagami [Mountaineering]"
-                },
-                {
-                value: "[Ayaka]-Halloween",
-                text: "Ayaka Mariko [Halloween]"
-                },
-                {
-                value: "[Aimi]-Winter",
-                text: "Aimi Eri [Winter Clothes]"
-                },
-                {
-                value: "[Ren]-Swimsuit",
-                text: "Ren Isuzu [Swimsuit]"
-                },
-                {
-                value: "[Ren]-Winter",
-                text: "Ren Isuzu [Winter Clothes]"
-                },
-                {
-                value: "[Ren]-Casual",
-                text: "Ren Isuzu [Casual Clothes]"
-                },
-                {
-                value: "[Rika]-Winter",
-                text: "Rika Ayano [Winter Clothes]"
-                },
-                {
-                value: "[Konomi]-Winter",
-                text: "Konomi Haruna [Winter Clothes]"
-                },
-                {
-                value: "[Sayuki]-Swimsuit",
-                text: "Sayuki Fumino [Swimsuit]"
-                },
-                {
-                value: "[Riko]-Winter",
-                text: "Riko Chiaki [Winter Clothes]"
-                },
-                {
-                value: "[Meru]-Winter",
-                text: "Meru Anna [Winter Clothes]"
-                },
-                {
-                value: "[Ikumi]-Maid",
-                text: "Ikumi Makino [Maid]"
-                }
+             {
+              value: "[Iroha]-Swimsuit",
+              text: "Iroha Tamaki [Swimsuit]"
+             },
+             {
+              value: "[Iroha]-Christmas",
+              text: "Iroha Tamaki [Christmas]"
+             },
+             {
+              value: "[Iroha]-NewYear",
+              text: "Iroha Tamaki [New Years]"
+             },
+             {
+              value: "[Iroha]-Winter",
+              text: "Iroha Tamaki [Winter Clothes]"
+             },
+             {
+              value: "[Iroha]-Maid",
+              text: "Iroha Tamaki [Maid]"
+             },
+             {
+              value: "[Yachiyo]-Swimsuit",
+              text: "Yachiyo Nanami [Swimsuit]"
+             },
+             {
+              value: "[Yachiyo]-NewYear",
+              text: "Yachiyo Nanami [New Years]"
+             },
+             {
+              value: "[Yachiyo]-School",
+              text: "Yachiyo Nanami [Uniform]"
+             },
+             {
+              value: "[Tsuruno]-Swimsuit",
+              text: "Tsuruno Yui [Swimsuit]"
+             },
+             {
+              value: "[Tsuruno]-Christmas",
+              text: "Tsuruno Yui [Christmas]"
+             },
+             {
+              value: "[Tsuruno]-NewYear",
+              text: "Tsuruno Yui [New Years]"
+             },
+             {
+              value: "[Tsuruno]-Winter",
+              text: "Tsuruno Yui [Winter Clothes]"
+             },
+             {
+              value: "[Sana]-Swimsuit",
+              text: "Sana Futaba [Swimsuit]"
+             },
+             {
+              value: "[Sana]-NewYear",
+              text: "Sana Futaba [New Years]"
+             },
+             {
+              value: "[Sana]-Winter",
+              text: "Sana Futaba [Winter Clothes]"
+             },
+             {
+              value: "[Felicia]-Swimsuit",
+              text: "Felicia Mitsuki [Swimsuit]"
+             },
+             {
+              value: "[Felicia]-Halloween",
+              text: "Felicia Mitsuki [Halloween]"
+             },
+             {
+              value: "[Felicia]-NewYear",
+              text: "Felicia Mitsuki [New Years]"
+             },
+             {
+              value: "[Felicia]-Winter",
+              text: "Felicia Mitsuki [Winter Clothes]"
+             },
+             {
+              value: "[Mifuyu]-School",
+              text: "Mifuyu Azusa [Uniform]"
+             },
+             {
+              value: "[Mifuyu]-Swimsuit",
+              text: "Mifuyu Azusa [Swimsuit]"
+             },
+             {
+              value: "[Mifuyu]-Christmas",
+              text: "Mifuyu Azusa [Christmas]"
+             },
+             {
+              value: "[Touka]-Swimsuit",
+              text: "Touka Satomi [Swimsuit]"
+             },
+             {
+              value: "[Alina]-Swimsuit",
+              text: "Alina Gray [Swimsuit]"
+             },
+             {
+              value: "[Rena]-Swimsuit",
+              text: "Rena Minami [Swimsuit]"
+             },
+             {
+              value: "[Rena]-Christmas",
+              text: "Rena Minami [Christmas]"
+             },
+             {
+              value: "[Rena]-Winter",
+              text: "Rena Minami [Winter Clothes]"
+             },
+             {
+              value: "[Momoko]-Swimsuit",
+              text: "Momoko Togame [Swimsuit]"
+             },
+             {
+              value: "[Momoko]-Winter",
+              text: "Momoko Togame [Winter Clothes]"
+             },
+             {
+              value: "[Kaede]-Swimsuit",
+              text: "Kaede Akino [Swimsuit]"
+             },
+             {
+              value: "[Kaede]-Winter",
+              text: "Kaede Akino [Winter Clothes]"
+             },
+             {
+              value: "[Kaede]-Christmas",
+              text: "Kaede Akino [Christmas]"
+             },
+             {
+              value: "[Karin]-Swimsuit",
+              text: "Karin Misono [Swimsuit]"
+             },
+             {
+              value: "[Nemu]-Swimsuit",
+              text: "Nemu Hiiragi [Swimsuit]"
+             },
+             {
+              value: "[Ui]-Swimsuit",
+              text: "Ui Tamaki [Swimsuit]"
+             },
+             {
+              value: "[Ui]-NewYear",
+              text: "Ui Tamaki [New Years]"
+             },
+             {
+              value: "[Kanagi]-Swimsuit",
+              text: "Kanagi Izumi [Swimsuit]"
+             },
+             {
+              value: "[Kanagi]-Winter",
+              text: "Kanagi Izumi [Winter Clothes]"
+             },
+             {
+              value: "[Kanagi]-Maid",
+              text: "Kanagi Izumi [Maid]"
+             },
+             {
+              value: "[Mitama]-Swimsuit",
+              text: "Mitama Yakumo [Swimsuit]"
+             },
+             {
+              value: "[Mitama]-Home",
+              text: "Mitama Yakumo [Home]"
+             },
+             {
+              value: "[Mitama]-Christmas",
+              text: "Mitama Yakumo [Christmas]"
+             },
+             {
+              value: "[Tsukuyo]-Christmas",
+              text: "Tsukuyo Amane [Christmas]"
+             },
+             {
+              value: "[Tsukuyo]-Winter",
+              text: "Tsukuyo Amane [Winter Clothes]"
+             },
+             {
+              value: "[Tsukasa]-Christmas",
+              text: "Tsukasa Amane [Christmas]"
+             },
+             {
+              value: "[Tsukasa]-Winter",
+              text: "Tsukasa Amane [Winter Clothes]"
+             },
+             {
+              value: "[Madoka]-Swimsuit",
+              text: "Madoka Kaname [Swimsuit]"
+             },
+             {
+              value: "[Madoka]-Winter",
+              text: "Madoka Kaname [Winter Clothes]"
+             },
+             {
+              value: "[Moemura]-NewYear",
+              text: "Homura Akemi (Glasses ver.) [New Years]"
+             },
+             {
+              value: "[Moemura]-Winter",
+              text: "Homura Akemi (Glasses ver.) [Winter Clothes]"
+             },
+             {
+              value: "[Sayaka]-Swimsuit",
+              text: "Sayaka Miki [Swimsuit]"
+             },
+             {
+              value: "[Sayaka]-Winter",
+              text: "Sayaka Miki [Winter Clothes]"
+             },
+             {
+              value: "[Mami]-Swimsuit",
+              text: "Mami Tomoe [Swimsuit]"
+             },
+             {
+              value: "[Mami]-Winter",
+              text: "Mami Tomoe [Winter Clothes]"
+             },
+             {
+              value: "[Mami]-NewYear",
+              text: "Mami Tomoe [New Years]"
+             },
+             {
+              value: "[Kyoko]-Swimsuit",
+              text: "Kyoko Sakura [Swimsuit]"
+             },
+             {
+              value: "[Kyoko]-Halloween",
+              text: "Kyoko Sakura [Halloween]"
+             },
+             {
+              value: "[Kyoko]-Winter",
+              text: "Kyoko Sakura [Winter Clothes]"
+             },
+             {
+              value: "[Kyoko]-NewYear",
+              text: "Kyoko Sakura [New Years]"
+             },
+             {
+              value: "[Natsuki]-Halloween",
+              text: "Natsuki Utsuho [Halloween]"
+             },
+             {
+              value: "[Hinano]-Swimsuit",
+              text: "Hinano Miyako [Swimsuit]"
+             },
+             {
+              value: "[Hinano]-Winter",
+              text: "Hinano Miyako [Winter Clothes]"
+             },
+             {
+              value: "[Emiri]-Christmas",
+              text: "Emiri Kisaki [Christmas]"
+             },
+             {
+              value: "[Emiri]-Winter",
+              text: "Emiri Kisaki [Winter Clothes]"
+             },
+             {
+              value: "[Sasara]-Winter",
+              text: "Sasara Minagi [Winter Clothes]"
+             },
+             {
+              value: "[Asuka]-Winter",
+              text: "Asuka Tatsuki [Winter Clothes]"
+             },
+             {
+              value: "[Shizuku]-Halloween",
+              text: "Shizuku Hozumi [Halloween]"
+             },
+             {
+              value: "[Akira]-Christmas",
+              text: "Akira Shinobu [Christmas]"
+             },
+             {
+              value: "[Kako]-Halloween",
+              text: "Kako Natsume [Halloween]"
+             },
+             {
+              value: "[Kokoro]-Swimsuit",
+              text: "Kokoro Awane [Swimsuit]"
+             },
+             {
+              value: "[Kokoro]-Winter",
+              text: "Kokoro Awane [Winter Clothes]"
+             },
+             {
+              value: "[Kokoro]-Outdoor",
+              text: "Kokoro Awane [Mountaineering]"
+             },
+             {
+              value: "[Masara]-Swimsuit",
+              text: "Masara Kagami [Swimsuit]"
+             },
+             {
+              value: "[Masara]-Winter",
+              text: "Masara Kagami [Winter Clothes]"
+             },
+             {
+              value: "[Masara]-Outdoor",
+              text: "Masara Kagami [Mountaineering]"
+             },
+             {
+              value: "[Ayaka]-Halloween",
+              text: "Ayaka Mariko [Halloween]"
+             },
+             {
+              value: "[Aimi]-Winter",
+              text: "Aimi Eri [Winter Clothes]"
+             },
+             {
+              value: "[Ren]-Swimsuit",
+              text: "Ren Isuzu [Swimsuit]"
+             },
+             {
+              value: "[Ren]-Winter",
+              text: "Ren Isuzu [Winter Clothes]"
+             },
+             {
+              value: "[Ren]-Casual",
+              text: "Ren Isuzu [Casual Clothes]"
+             },
+             {
+              value: "[Rika]-Winter",
+              text: "Rika Ayano [Winter Clothes]"
+             },
+             {
+              value: "[Konomi]-Winter",
+              text: "Konomi Haruna [Winter Clothes]"
+             },
+             {
+              value: "[Sayuki]-Swimsuit",
+              text: "Sayuki Fumino [Swimsuit]"
+             },
+             {
+              value: "[Riko]-Winter",
+              text: "Riko Chiaki [Winter Clothes]"
+             },
+             {
+              value: "[Meru]-Winter",
+              text: "Meru Anna [Winter Clothes]"
+             },
+             {
+              value: "[Ikumi]-Maid",
+              text: "Ikumi Makino [Maid]"
+             },
+             {
+              value: "[Meru]-Halloween",
+              text: "Meru Anna [Halloween]"
+             },
+             {
+              value: "[Kanae]-Halloween",
+              text: "Kanae Yukino [Halloween]"
+             },
+             {
+              value: "[Ryou]-Halloween",
+              text: "Ryou Midori [Halloween]"
+             }
             ]
-            }
-            ],
-            visibleIf: "{quest_type} = 'MCS'",
-            title: "Please select the Costume Story you have been farming:",
-            isRequired: true
-            },
-            {
-            type: "panel",
-            name: "story_panel",
-            elements: [
-            {
+           }
+          ],
+          visibleIf: "{quest_type} = 'MCS'",
+          title: "Please select the Costume Story you have been farming:",
+          isRequired: true
+         },
+         {
+          type: "panel",
+          name: "story_panel",
+          elements: [
+           {
             type: "panel",
             name: "ch_ep_battle_panel",
             elements: [
-                {
-                type: "rating",
-                name: "arc_number",
-                visibleIf: "{quest_type} = \"M\" || {quest_type} = \"C\" || {quest_type} = \"A\"",
-                title: "Story Arc:",
-                isRequired: true,
-                rateValues: [
-                {
+             {
+              type: "rating",
+              name: "arc_number",
+              visibleIf: "{quest_type} = \"M\" || {quest_type} = \"C\" || {quest_type} = \"A\"",
+              title: "Story Arc:",
+              isRequired: true,
+              rateValues: [
+               {
                 value: 1,
                 text: "Arc I"
-                },
-                {
+               },
+               {
                 value: 2,
                 text: "Arc II"
-                }
-                ]
-                },
-                {
-                type: "rating",
-                name: "ch_number_m1",
-                visibleIf: "{quest_type} = 'M' and {arc_number} = 1",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMax: 10
-                },
-                {
-                type: "rating",
-                name: "ch_number_c1",
-                visibleIf: "{quest_type} = 'C' and {arc_number} = 1",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMax: 10
-                },
-                {
-                type: "rating",
-                name: "ch_number_a1",
-                visibleIf: "{quest_type} = 'A' and {arc_number} = 1",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMin: 2,
-                rateMax: 10
-                },
-                {
-                type: "rating",
-                name: "ch_number_m2",
-                visibleIf: "{quest_type} = 'M' and {arc_number} = 2",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMax: 3
-                },
-                {
-                type: "rating",
-                name: "ch_number_c2",
-                visibleIf: "{quest_type} = 'C' and {arc_number} = 2",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMax: 3
-                },
-                {
-                type: "rating",
-                name: "ch_number_a2",
-                visibleIf: "{quest_type} = 'A' and {arc_number} = 2",
-                title: "Chapter Number:",
-                isRequired: true,
-                rateMax: 1
-                },
-                {
-                type: "rating",
-                name: "ep_number_mss",
-                visibleIf: "{quest_type} = \"MSS\"",
-                title: "Episode Number:",
-                isRequired: true,
-                rateValues: [
-                1,
-                2,
-                3,
-                {
+               }
+              ]
+             },
+             {
+              type: "rating",
+              name: "ch_number_m1",
+              visibleIf: "{quest_type} = 'M' and {arc_number} = 1",
+              title: "Chapter Number:",
+              isRequired: true,
+              rateMax: 10
+             },
+             {
+              type: "rating",
+              name: "ch_number_c1",
+              visibleIf: "{quest_type} = 'C' and {arc_number} = 1",
+              title: "Chapter Number:",
+              isRequired: true,
+              rateMax: 10
+             },
+             {
+              type: "rating",
+              name: "ch_number_a1",
+              visibleIf: "{quest_type} = 'A' and {arc_number} = 1",
+              title: "Chapter Number:",
+              isRequired: true,
+              rateMin: 2,
+              rateMax: 10
+             },
+             {
+              type: "rating",
+              name: "ch_number_m2",
+              visibleIf: "{quest_type} = 'M' and {arc_number} = 2",
+              title: "Chapter Number:",
+              isRequired: true,
+              rateValues: [
+               {
+                value: "P",
+                text: "Prologue"
+               },
+               "1",
+               "2",
+               "3",
+               "4",
+               "5"
+              ],
+              rateMin: "",
+              rateMax: 1
+             },
+             {
+              type: "rating",
+              name: "ch_number_c2",
+              visibleIf: "{quest_type} = 'C' and {arc_number} = 2",
+              title: "Chapter Number:",
+              isRequired: true,
+              rateValues: [
+               {
+                value: "P",
+                text: "Prologue"
+               },
+               "1",
+               "2",
+               "3"
+              ],
+              rateMin: 0,
+              rateMax: 1
+             },
+             {
+              type: "rating",
+              name: "ch_number_a2",
+              visibleIf: "{quest_type} = 'A' and {arc_number} = 2",
+              title: "Chapter Number:",
+              isRequired: true
+             },
+             {
+              type: "rating",
+              name: "ep_number_mss",
+              visibleIf: "{quest_type} = \"MSS\"",
+              title: "Episode Number:",
+              isRequired: true,
+              rateValues: [
+               1,
+               2,
+               3,
+               {
                 value: 4,
                 text: "Doppel/Trials"
-                }
-                ],
-                rateMax: 4
-                },
-                {
-                type: "rating",
-                name: "battle_number_mss",
-                visibleIf: "{quest_type} = \"MSS\"",
-                title: "Battle Number:",
-                isRequired: true,
-                rateValues: [
-                1,
-                2,
-                3
-                ],
-                rateMax: 4
-                },
-                {
-                type: "text",
-                name: "ep_number_mca",
-                visible: false,
-                visibleIf: "{quest_type} notempty &&\n{quest_type} != \"MSS\" &&\n{quest_type} != \"MCS\" ",
-                width: "50%",
-                title: "Episode Number:",
-                isRequired: true,
-                validators: [
-                {
+               }
+              ],
+              rateMax: 4
+             },
+             {
+              type: "rating",
+              name: "battle_number_mss",
+              visibleIf: "{quest_type} = \"MSS\"",
+              title: "Battle Number:",
+              isRequired: true,
+              rateValues: [
+               1,
+               2,
+               3
+              ],
+              rateMax: 4
+             },
+             {
+              type: "text",
+              name: "ep_number_mca",
+              visible: false,
+              visibleIf: "{quest_type} notempty &&\n{quest_type} != \"MSS\" &&\n{quest_type} != \"MCS\" ",
+              width: "50%",
+              title: "Episode Number:",
+              isRequired: true,
+              validators: [
+               {
                 type: "numeric",
                 minValue: 1
-                }
-                ],
-                inputType: "number"
-                },
-                {
-                type: "text",
-                name: "battle_number_mca",
-                visibleIf: "{quest_type} = \"A\" ||\n(\n    (\n        {quest_type} = \"M\" ||\n        {quest_type} = \"C\"\n    ) && (\n        {arc_number} = 2 ||\n        (\n            {ch_number_mca} <> 8 &&\n            {ch_number_mca} <> 9\n        )\n    )\n)",
-                width: "50%",
-                title: "Battle Number:",
-                enableIf: "{quest_type} = \"A\" ||\n(\n    (\n        {quest_type} = \"M\" ||\n        {quest_type} = \"C\"\n    ) && (\n        {arc_number} = 2 ||\n        (\n            {ch_number_mca} <> 8 &&\n            {ch_number_mca} <> 9\n        )\n    )\n)",
-                isRequired: true,
-                validators: [
-                {
+               }
+              ],
+              inputType: "number"
+             },
+             {
+              type: "text",
+              name: "battle_number_mca",
+              visibleIf: "{quest_type} = \"A\" ||\n(\n    (\n        {quest_type} = \"M\" ||\n        {quest_type} = \"C\"\n    ) && (\n        {arc_number} = 2 ||\n        (\n            {ch_number_mca} <> 8 &&\n            {ch_number_mca} <> 9\n        )\n    )\n)",
+              width: "50%",
+              title: "Battle Number:",
+              enableIf: "{quest_type} = \"A\" ||\n(\n    (\n        {quest_type} = \"M\" ||\n        {quest_type} = \"C\"\n    ) && (\n        {arc_number} = 2 ||\n        (\n            {ch_number_mca} <> 8 &&\n            {ch_number_mca} <> 9\n        )\n    )\n)",
+              isRequired: true,
+              validators: [
+               {
                 type: "numeric",
                 minValue: 1
-                }
-                ],
-                inputType: "number"
-                }
+               }
+              ],
+              inputType: "number"
+             }
             ]
-            }
-            ],
-            visibleIf: "{quest_type} != 'L'",
-            isRequired: true
-            },
-            {
-            type: "panel",
-            name: "labyrinth_panel",
-            elements: [
-            {
+           }
+          ],
+          visibleIf: "{quest_type} != 'L'",
+          isRequired: true
+         },
+         {
+          type: "panel",
+          name: "labyrinth_panel",
+          elements: [
+           {
             type: "rating",
             name: "labyrinth_type",
             visibleIf: "{quest_type} = 'L'",
             title: "Please Select the Element of the Labyrinth you've farmed:",
             isRequired: true,
             rateValues: [
-                "Flame",
-                "Aqua",
-                "Forest",
-                "Light",
-                "Dark",
-                "ALL"
+             "Flame",
+             "Aqua",
+             "Forest",
+             "Light",
+             "Dark",
+             "ALL"
             ]
-            },
-            {
+           },
+           {
             type: "rating",
             name: "labyrinth_ap",
             visibleIf: "{quest_type} = 'L'",
             title: "Please Select the Difficulty of the Labyrinth farmed:",
             isRequired: true,
             rateValues: [
-                {
-                value: "10",
-                text: "Beginner (10 Difficulty, 10 AP)"
-                },
-                {
-                value: "20",
-                text: "Initiate (20 Difficulty, 20 AP)"
-                },
-                {
-                value: "30",
-                text: "Advanced (30 Difficulty, 30 AP)"
-                },
-                {
-                value: "50",
-                text: "Master (50 Difficulty, 40 AP)"
-                }
+             {
+              value: "10",
+              text: "Beginner (10 Difficulty, 10 AP)"
+             },
+             {
+              value: "20",
+              text: "Initiate (20 Difficulty, 20 AP)"
+             },
+             {
+              value: "30",
+              text: "Advanced (30 Difficulty, 30 AP)"
+             },
+             {
+              value: "50",
+              text: "Master (50 Difficulty, 40 AP)"
+             }
             ]
-            }
-            ],
-            visibleIf: "{quest_type} = 'L'",
-            title: "Labyrinth Quest Report"
-            },
-            {
-            type: "panel",
-            name: "panel2",
-            elements: [
-            {
+           }
+          ],
+          visibleIf: "{quest_type} = 'L'",
+          title: "Labyrinth Quest Report"
+         },
+         {
+          type: "panel",
+          name: "panel2",
+          elements: [
+           {
             type: "text",
             name: "times_farmed",
             width: "50%",
@@ -2060,122 +2294,128 @@
             defaultValue: 0,
             isRequired: true,
             validators: [
-                {
-                type: "numeric",
-                minValue: 1
-                }
+             {
+              type: "numeric",
+              minValue: 1
+             }
             ],
             inputType: "number"
-            },
-            {
+           },
+           {
             type: "comment",
             name: "drops",
             title: "Please list all Chests that Dropped:",
             isRequired: true,
             rows: 6
-            },
-            {
+           },
+           {
             type: "html",
             name: "question3",
             startWithNewLine: false,
-            html: "</br></br><i>(If nothing dropped, please write \"None\". <u>All dropped chests should be counted</u>, including the amount of those giving Curse Chips/Kyuubey Coins!)</i>\n</br></br>\nExample:</br>\n<i>Rooftop Key (x2), Rooftop Ballon, 300 CC (x3)</i>\n</br></br>\n<h5><b><i><a href=\"https://docs.google.com/spreadsheets/d/1Il9iK_UtkBbYPMas44x6yLRR21Iu8p3vckmllVVzUpM/edit\" target=\"_blank\">You can use a copy of this sheet for counting your drops more easily</a></i></b></h5>"
-            }
-            ],
-            visibleIf: "{quest_type} notempty"
-            }
+            html: "<i><hr style=\"border-top: 0.4em double darkred;\"></br><h5 style=\"color:darkred; text-align:center\">Please, <u>do not include first clears</u> of any quest you're reporting on.</h4></br>\n<i>If nothing dropped, please write \"None\". <u>All dropped chests should be counted</u>, including the amount of those giving Curse Chips/Kyuubey Coins!</i></br>\n<b><u>Example:</u></b></br></br>\n<i style=\"font-size: large; padding-left: 2em\">Rooftop Key (x2), Rooftop Ballon, 300 CC (x3)</i>\n</br></br><i>If a certain <u>material</u> (not money) is submitted without an amount, it'll be assumed to be \"(x1)\". If none of it dropped, you can either not mention it or use a \"(x0)\".</i></br>\n</br><hr style=\"border-top: 0.4em double darkred;\"></i></h4>\n\n</br><h5><b><i><u><a href=\"https://docs.google.com/spreadsheets/d/1Il9iK_UtkBbYPMas44x6yLRR21Iu8p3vckmllVVzUpM/edit\" target=\"_blank\">[ You can use a copy of this sheet for counting your drops more easily ]</a></u></i></b></h5>"
+           }
+          ],
+          visibleIf: "{quest_type} notempty"
+         }
         ],
         isRequired: true,
         requiredErrorText: "You didn't answer some question, please check below."
-        }
-        ]
-        },
-        {
-        name: "Confirmation",
-        elements: [
-        {
+       }
+      ]
+     },
+     {
+      name: "Confirmation",
+      elements: [
+       {
         type: "html",
         name: "question1",
-        html: "<img src=\"https://i.imgur.com/urptiqS.png\" class=\"img-banner\">"
-        },
-        {
+        html: "<img src=\"https://starg09.com/magirecojp/assets/intro.png\" class=\"img-banner\">"
+       },
+       {
         type: "html",
         name: "summaryMSS",
         visibleIf: "{quest_type} = \"MSS\"",
-        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Character Selected:</strong> {meguca_name_visual}{meguca_name_dropdown}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Episode {ep_number_mss}</li>\n<li>Battle {battle_number_mss}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<ul>\n<li><em>{drops}</em></li>\n</ul>\n</li>\n</ul>\n</blockquote>\n"
-        },
-        {
+        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Character Selected:</strong> {meguca_name_visual}{meguca_name_dropdown}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Episode {ep_number_mss}</li>\n<li>Battle {battle_number_mss}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<blockquote style=\"border: dashed 0.1em; padding:0.6em\">\n<em>{drops}</em>\n</blockquote>\n</li>\n</ul>\n</blockquote>\n"
+       },
+       {
         type: "html",
         name: "summaryMCS",
         visibleIf: "{quest_type} = \"MCS\"",
-        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Costume Selected:</strong> {mcs_dropdown}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<ul>\n<li><em>{drops}</em></li>\n</ul>\n</li>\n</ul>\n</blockquote>\n"
-        },
-        {
+        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote><ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Costume Selected:</strong> {mcs_dropdown}</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<blockquote style=\"border: dashed 0.1em; padding:0.6em\">\n<em>{drops}</em>\n</blockquote>\n</li>\n</ul></blockquote>\n"
+       },
+       {
         type: "html",
         name: "summaryMCA",
         visibleIf: "{quest_type} = \"A\" ||\n(\n    (\n        {quest_type} = \"M\" ||\n        {quest_type} = \"C\"\n    ) && (\n        {arc_number} = 2 ||\n        (\n            {ch_number_mca} <> 8 &&\n            {ch_number_mca} <> 9\n        )\n    )\n)",
-        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Arc Number:</strong> {arc_number}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Chapter {ch_number_mca}</li>\n<li>Episode {ep_number_mca}</li>\n<li>Battle {battle_number_mca}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<ul>\n<li><em>{drops}</em></li>\n</ul>\n</li>\n</ul>\n</blockquote>\n"
-        },
-        {
+        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Arc Number:</strong> {arc_number}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Chapter {ch_number_mca}</li>\n<li>Episode {ep_number_mca}</li>\n<li>Battle {battle_number_mca}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<blockquote style=\"border: dashed 0.1em; padding:0.6em\">\n<em>{drops}</em>\n</blockquote>\n</li>\n</ul>\n</blockquote>\n"
+       },
+       {
         type: "html",
         name: "summaryMC89",
         visibleIf: "({quest_type} = \"M\" || {quest_type} = \"C\") &&\n {arc_number} = 1 &&\n({ch_number_mca} = 8 || {ch_number_mca} = 9)",
-        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Arc Number:</strong> {arc_number}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Chapter {ch_number_mca}</li>\n<li>Episode {ep_number_mca}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<ul>\n<li><em>{drops}</em></li>\n</ul>\n</li>\n</ul>\n</blockquote>\n"
-        },
-        {
+        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Arc Number:</strong> {arc_number}</li>\n<li><strong>Stage Selected:</strong>\n<ul>\n<li>Chapter {ch_number_mca}</li>\n<li>Episode {ep_number_mca}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<blockquote style=\"border: dashed 0.1em; padding:0.6em\">\n<em>{drops}</em>\n</blockquote>\n</li>\n</ul>\n</blockquote>\n"
+       },
+       {
         type: "html",
         name: "summaryD",
         visibleIf: "{quest_type} = 'L'",
-        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Labyrinth Selected:</strong>\n<ul>\n<li>Type of Labyrinth: {labyrinth_type}</li>\n<li>Difficulty/AP Cost: {labyrinth_ap}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<ul>\n<li><em>{drops}</em></li>\n</ul>\n</li>\n</ul>\n</blockquote>\n"
-        },
-        {
+        html: "<h2>Please confirm all the data is correct before submitting:</h2>\n<blockquote>\n<ul>\n<li><strong>Username:</strong> {username}</li>\n<li><strong>Type of Quest Farmed</strong>: {quest_type}</li>\n<li><strong>Labyrinth Selected:</strong>\n<ul>\n<li>Type of Labyrinth: {labyrinth_type}</li>\n<li>Difficulty/AP Cost: {labyrinth_ap}</li>\n</ul>\n</li>\n<li><strong>Internal Stage Name:</strong> {farmed_stage}</li>\n<li><strong>Times Farmed:</strong> {times_farmed}</li>\n<li><strong>Dropped chests:</strong>\n<blockquote style=\"border: dashed 0.1em; padding:0.6em\">\n<em>{drops}</em>\n</blockquote>\n</li>\n</ul>\n</blockquote>\n"
+       },
+       {
         type: "html",
         name: "question2",
         html: "<h3><i>Is this information correct?</i></h3>\n<br>\n<h6><i>You can press the <b>Back</b> button below to edit anything, or <b>Complete</b> in order to submit your report. Thanks again for your help!</i></h6>"
-        }
-        ]
-        }
+       }
+      ]
+     }
     ],
     triggers: [
-        {
-        type: "setvalue",
-        expression: "{quest_type} = 'MSS' and {selector_mode} empty",
-        setToName: "selector_mode",
-        setValue: "dropdown_mode"
-        },
-        {
-        type: "setvalue",
-        expression: "{quest_type} <> 'L' and {quest_type} <> 'MSS' and {arc_number} empty",
-        setToName: "arc_number",
-        setValue: 1
-        }
+     {
+      type: "setvalue",
+      expression: "{quest_type} = 'MSS' and {selector_mode} empty",
+      setToName: "selector_mode",
+      setValue: "dropdown_mode"
+     },
+     {
+      type: "setvalue",
+      expression: "{quest_type} <> 'L' and {quest_type} <> 'MSS' and {arc_number} empty",
+      setToName: "arc_number",
+      setValue: 1
+     },
+     {
+      type: "setvalue",
+      expression: "{selector_mode} = 'visual_mode' and {meguca_type} empty",
+      setToName: "meguca_type",
+      setValue: "show_all"
+     }
     ],
     calculatedValues: [
-        {
-        name: "ch_number_m",
-        expression: "iif({arc_number} = 1, {ch_number_m1}, {ch_number_m2})"
-        },
-        {
-        name: "ch_number_c",
-        expression: "iif({arc_number} = 1, {ch_number_c1}, {ch_number_c2})"
-        },
-        {
-        name: "ch_number_a",
-        expression: "iif({arc_number} = 1, {ch_number_a1}, {ch_number_a2})"
-        },
-        {
-        name: "ch_number_mca",
-        expression: "iif({quest_type} = 'M', {ch_number_m},iif({quest_type} = 'C', {ch_number_c},iif({quest_type} = 'A', {ch_number_a},'NADA')))"
-        },
-        {
-        name: "farmed_stage",
-        expression: "iif({quest_type} = 'L',{labyrinth_type} + '-' + {labyrinth_ap}, {quest_type} + iif({quest_type} = 'MCS',{mcs_dropdown}, iif({quest_type} = 'MSS','[' + {meguca_name} + ']-' + {ep_number_mss} + '-' + {battle_number_mss}, iif(( ({quest_type} = 'M' || {quest_type} = 'C') && {arc_number} = 1 && ({ch_number_mca} = 8 || {ch_number_mca} = 9) ),{arc_number} + '-' + {ch_number_mca} + '-' + {ep_number_mca},{arc_number} + '-' + {ch_number_mca} + '-' + {ep_number_mca} + '-' + {battle_number_mca})) ))",
-        includeIntoResult: true
-        },
-        {
-        name: "meguca_name",
-        expression: "iif({selector_mode} = 'visual_mode', {meguca_name_visual}, iif({selector_mode} = 'dropdown_mode', {meguca_name_dropdown}, '??????'))",
-        includeIntoResult: true
-        }
+     {
+      name: "ch_number_m",
+      expression: "iif({arc_number} = 1, {ch_number_m1}, {ch_number_m2})"
+     },
+     {
+      name: "ch_number_c",
+      expression: "iif({arc_number} = 1, {ch_number_c1}, {ch_number_c2})"
+     },
+     {
+      name: "ch_number_a",
+      expression: "iif({arc_number} = 1, {ch_number_a1}, {ch_number_a2})"
+     },
+     {
+      name: "ch_number_mca",
+      expression: "iif({quest_type} = 'M', {ch_number_m},iif({quest_type} = 'C', {ch_number_c},iif({quest_type} = 'A', {ch_number_a},'NADA')))"
+     },
+     {
+      name: "farmed_stage",
+      expression: "iif({quest_type} = 'L',{labyrinth_type} + '-' + {labyrinth_ap}, {quest_type} + iif({quest_type} = 'MCS',{mcs_dropdown}, iif({quest_type} = 'MSS','[' + {meguca_name} + ']-' + {ep_number_mss} + '-' + {battle_number_mss}, iif(( ({quest_type} = 'M' || {quest_type} = 'C') && {arc_number} = 1 && ({ch_number_mca} = 8 || {ch_number_mca} = 9) ),{arc_number} + '-' + {ch_number_mca} + '-' + {ep_number_mca},{arc_number} + '-' + {ch_number_mca} + '-' + {ep_number_mca} + '-' + {battle_number_mca})) ))",
+      includeIntoResult: true
+     },
+     {
+      name: "meguca_name",
+      expression: "iif({selector_mode} = 'visual_mode', {meguca_name_visual}, iif({selector_mode} = 'dropdown_mode', {meguca_name_dropdown}, '??????'))",
+      includeIntoResult: true
+     }
     ],
     clearInvisibleValues: "onHidden"
-}
+   }
